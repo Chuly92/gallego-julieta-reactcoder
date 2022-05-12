@@ -42,7 +42,7 @@ export const NavBar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
 
-          {/* Render icon page in full-size window (widht up to 900px) */}
+          {/* Render icon page in full-size window (width up to 900px) */}
           <IconButton
             edge="start" aria-label="menu"
             sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
