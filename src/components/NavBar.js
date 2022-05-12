@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 export const NavBar = () => {
 
   //Define menu values
-  const pages = ['Home', 'Store', 'New Incomes'];
+  const pages = ['Home', 'Store', 'New Arrivals'];
   const settings = ['Account', 'Orders', 'Logout'];
 
   const [anchorElNav, setAnchorElNav] = useState(null);
