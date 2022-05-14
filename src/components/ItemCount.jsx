@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { Box } from "@mui/system";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
   const [counter, setCounter] = useState(initial);
@@ -41,21 +42,36 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 200, maxHeight: 400, mx: 2, border: 4, borderRadius: 4, borderStyle: 'double', borderColor: '#8f8f8f' }}>
-        <CardMedia 
-        component="img" image="/storeItem1.png" alt="image"/>
+      <Card
+        sx={{
+          maxWidth: 200,
+          maxHeight: 400,
+          mx: 2,
+          border: 4,
+          borderRadius: 4,
+          borderStyle: "double",
+          borderColor: "#8f8f8f",
+        }}
+      >
+        <CardMedia component="img" image="/storeItem1.png" alt="image" />
 
         <CardContent sx={{ alignItems: "center" }}>
           <Typography
             variant="title"
             component="div"
             align="center"
-            sx={{ mb: 1,  }}
+            sx={{ mb: 1, fontWeight: 500 }}
           >
             Pikachu Plush
           </Typography>
 
-          <ButtonGroup>
+          <ButtonGroup
+            sx={{
+              alignItems: "center",
+              width: "100%",
+              justifyContent: "space-evenly",
+            }}
+          >
             <IconButton
               aria-label="add"
               color="secondary"
@@ -64,19 +80,12 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
               <RemoveCircleIcon />
             </IconButton>
 
-            <Typography sx={{textAlign: 'center'}}>
-            <TextField 
-              sx={{ maxWidth: 1 / 2}}
-              id="qtyItems"
-              value={counter} 
-              />
-              </Typography>
+            <Box sx={{ display: "grid" }}>{counter}</Box>
 
             <IconButton
               aria-label="delete"
               color="secondary"
-              onClick={handleAddItem}              
-              
+              onClick={handleAddItem}
             >
               <AddCircleIcon />
             </IconButton>
@@ -85,11 +94,11 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
         <CardActions>
           <Button
             color="secondary"
-            sx={{ display: "flex", margin:"0 auto" }}
+            sx={{ display: "flex", margin: "0 auto" }}
             onClick={handleAddToCart}
             type="submit"
             variant="contained"
-            >
+          >
             Add to Cart
           </Button>
         </CardActions>
