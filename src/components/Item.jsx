@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card, ImageListItem, Typography } from "@mui/material";
+import { ItemDetailContainer } from "./ItemDetailContainer";
 
 export const Item = ({ dataItem }) => {
   return (
@@ -47,7 +48,8 @@ export const Item = ({ dataItem }) => {
           color="secondary"
           sx={{ display: "flex", margin: "auto", mt: 1, mb: 2, fontSize: 12 }}
           type="submit"
-          variant="contained"          
+          variant="contained"   
+          onClick={() => <ItemDetailContainer dataItem={dataItem}/>}                 
         >
           View details
         </Button>
@@ -99,7 +101,7 @@ export const Item = ({ dataItem }) => {
           size="small"
           sx={{ display: "flex", margin: "auto", fontSize: 10, mt: 1, mb: 1}}
           type="submit"
-          variant="contained"          
+          variant="contained"
         >
           View details
         </Button>
