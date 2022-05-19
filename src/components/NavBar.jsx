@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/pikachu.png";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,8 +16,17 @@ import { CartWidget } from "./CartWidget";
 
 export const NavBar = () => {
   //Define menu values
-  const pages = ["Home", "Store", "New Arrivals"];
-  const settings = ["Account", "Orders", "Logout"];
+  const pages = [
+    { id: 1, name: "Home", route: "/" },
+    { id: 2, name: "Store", route: "/item" },
+    { id: 3, name: "New Arrivals", route: "/arrivals" },
+  ];
+
+  const settings = [
+    { id: 1, name: "Account", route: "/account"},
+    { id: 2, name: "Orders", route: "/orders"}, 
+    { id: 3, name: "Logout", route: "/logout"},
+  ];
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -36,6 +46,8 @@ export const NavBar = () => {
     setAnchorElUser(null);
   };
 
+  let navigate = useNavigate();
+
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
       <Container maxWidth="xl">
@@ -49,22 +61,25 @@ export const NavBar = () => {
             <img
               src={logo}
               alt="logo"
+              disabled
               style={{ maxWidth: 50, maxHeight: 50 }}
             />
           </IconButton>
 
           {/* Render title store in full-size window (width up to 900px) */}
-          <Typography
-            variant="h5"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              color: "red",
-            }}
-          >
-            PikaStore
-          </Typography>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Typography
+              variant="h5"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                color: "red",
+              }}
+            >
+              PikaStore
+            </Typography>
+          </Link>
 
           {/* Render pages in responsive window (width down to 900px) */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -92,8 +107,14 @@ export const NavBar = () => {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.id}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(`${page.route}`);
+                  }}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -108,37 +129,42 @@ export const NavBar = () => {
             <img
               src={logo}
               alt="logo"
+              disabled
               style={{ maxWidth: 40, maxHeight: 40 }}
             />
           </IconButton>
 
           {/* Render title in responsive window (width down to 900px) */}
-          <Typography
-            variant="h6"
-            sx={{
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              color: "red",
-              textDecoration: "none",
-            }}
-          >
-            PikaStore
-          </Typography>
+          <Link to="/" style={{ textDecoration: "none", flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                display: { xs: "flex", md: "none" },
+                fontFamily: "monospace",
+                color: "red",
+                textDecoration: "none",
+              }}
+            >
+              PikaStore
+            </Typography>
+          </Link>
 
           {/* Render pages in full-size window (width up to 900px) */}
           <Box
             sx={{
               flexGrow: 1,
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignContent: "center",
               display: { xs: "none", md: "flex" },
             }}
           >
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate(`${page.route}`);
+                }}
+                key={page.id}
                 sx={{
                   color: "white",
                   display: "block",
@@ -148,7 +174,7 @@ export const NavBar = () => {
                   mx: 2,
                 }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -181,8 +207,14 @@ export const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem 
+                key={setting.id} 
+                onClick={() => {
+                  handleCloseUserMenu();
+                  navigate(`${setting.route}`);
+                }}
+                  >
+                  <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
