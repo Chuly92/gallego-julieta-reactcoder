@@ -4,7 +4,7 @@ import { ItemList } from "./ItemList";
 import dataMock from "../products.json";
 import { CircularProgress } from "@mui/material";
 
-export const ItemListContainer = ({ greetings }) => {
+export const ItemListContainer = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -19,7 +19,6 @@ export const ItemListContainer = ({ greetings }) => {
       setTimeout(() => {
         if (id) {
           const categoryFilter = dataMock.filter((cat) => cat.categoryId == id);
-          console.log(categoryFilter);
           res(categoryFilter);
         } else {
           res(dataMock);
@@ -47,7 +46,6 @@ export const ItemListContainer = ({ greetings }) => {
         </>
       )}
 
-      {!loading && <h3 style={{ textAlign: "center" }}>{greetings}</h3>}
       {error && "Error loading data"}
       {data && <ItemList data={data} />}
     </>

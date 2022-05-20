@@ -20,8 +20,8 @@ export const NavBar = () => {
   //Define menu values
   const pages = [
     { id: 1, name: "Home", route: "/" },
-    { id: 2, name: "Store", route: "/item/all" },
-    { id: 3, name: "New Arrivals", route: "/item/all" },
+    { id: 2, name: "Store", route: "/" },
+    { id: 3, name: "Categories", route: "/categories" },
   ];
 
   const settings = [

@@ -84,6 +84,7 @@ export const ItemDetail = ({ data }) => {
               }}
               type="submit"
               variant="contained"
+              disabled
             >
               Add to Cart
             </Button>
@@ -113,7 +114,7 @@ export const ItemDetail = ({ data }) => {
               fontFamily: "fantasy",
               letterSpacing: ".05rem",
               mt: 2,
-              justifyContent: "center",
+              textAlign: "center",
             }}
           >
             {data.title}
@@ -151,6 +152,7 @@ export const ItemDetail = ({ data }) => {
             sx={{ margin: "auto", fontSize: 14, mt: 1, mb: 1, display: "flex" }}
             type="submit"
             variant="contained"
+            disabled
           >
             Add to Cart
           </Button>
