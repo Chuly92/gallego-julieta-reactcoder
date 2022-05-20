@@ -1,4 +1,10 @@
-import { Button, Container, ImageListItem, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  ImageListItem,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
@@ -7,83 +13,85 @@ export const ItemDetail = ({ data }) => {
     <>
       <Container maxWidth="3840px" component="div">
         {/* Screen size up to 900px */}
-        <Box
+
+        <Typography
+          variant="title"
+          align="center"
+          display="block"
           sx={{
-            float: "left",
-            maxWidth: "50%",
-            display: { xs: "none", md: "inline-flex" },
+            fontSize: 38,
+            fontFamily: "fantasy",
+            letterSpacing: ".05rem",
+            display: { xs: "none", md: "block" },
+            maxWidth: "100%",
+            mt: 2,
           }}
         >
-          <ImageListItem>
-            <img
-              src={data.pictureUrl}
-              srcSet={data.pictureUrl}
-              alt={data.title}
-              loading="lazy"
-            />
-          </ImageListItem>
-        </Box>
+          {data.title}
+        </Typography>
 
-        <Box sx={{ p: 4, mx: 2 }}>
-          <Typography
-            variant="title"
-            align="center"
-            display="flex"
-            sx={{
-              fontSize: 48,
-              fontFamily: "fantasy",
-              letterSpacing: ".05rem",
-              display: { xs: "none", md: "block" },
-            }}
-          >
-            {data.title}
-          </Typography>
+        <Grid
+          maxWidth="3840px"
+          container
+          spacing={2}
+          columns={16}
+          sx={{ mt: 2, display: { xs: "none", md: "flex" } }}
+        >
+          <Grid item xs={8}>
+            <ImageListItem>
+              <img
+                src={data.pictureUrl}
+                srcSet={data.pictureUrl}
+                alt={data.title}
+                loading="lazy"
+              />
+            </ImageListItem>
+          </Grid>
 
-          <Typography
-            variant="body1"
-            display="flex"
-            sx={{
-              fontSize: 28,
-              fontFamily: "monospace",
-              display: { xs: "none", md: "block" },
-              m: 2,
-            }}
-          >
-            {data.description}
-          </Typography>
+          <Grid item xs={8} sx={{mt: 2}}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: 20,
+                fontFamily: "monospace",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              {data.description}
+            </Typography>
 
-          <Typography
-            variant="body2"
-            display="flex"
-            sx={{
-              fontSize: 32,
-              fontWeight: 600,
-              fontFamily: "monospace",
-              display: { xs: "none", md: "block" },
-            }}
-          >
-            Price: US$ {data.price}
-          </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: 30,
+                fontWeight: 600,
+                fontFamily: "monospace",
+                display: { xs: "none", md: "flex" },
+                mt: 1,
+              }}
+            >
+              Price: US$ {data.price}
+            </Typography>
 
-          <Button
-            color="secondary"
-            sx={{
-              margin: "auto",
-              mt: 1,
-              mb: 2,
-              fontSize: 12,
-              alignItems: "justify-end",
-              display: { xs: "none", md: "block" }
-            }}
-            type="submit"
-            variant="contained"
-            
-          >
-            Add to Cart
-          </Button>
-        </Box>
+            <Button
+              color="secondary"
+              sx={{
+                margin: "auto",
+                mt: 2,
+                mb: 2,
+                fontSize: 12,
+                display: { xs: "none", md: "flex" },
+              }}
+              type="submit"
+              variant="contained"
+            >
+              Add to Cart
+            </Button>
+          </Grid>
+        </Grid>
 
         {/* Screen size down to 900px */}
+
         <Box sx={{ maxWidth: "100%", display: { xs: "flex", md: "none" } }}>
           <ImageListItem>
             <img
@@ -98,15 +106,14 @@ export const ItemDetail = ({ data }) => {
         <Box sx={{ p: 1, display: { xs: "block", md: "none" } }} variant="div">
           <Typography
             variant="title"
-            align="center"
             display="flex"
-            className="titulito"
             sx={{
               fontWeight: 500,
               fontSize: 32,
               fontFamily: "fantasy",
               letterSpacing: ".05rem",
               mt: 2,
+              justifyContent: "center",
             }}
           >
             {data.title}
@@ -132,7 +139,7 @@ export const ItemDetail = ({ data }) => {
               fontSize: 22,
               fontWeight: 600,
               fontFamily: "monospace",
-              justifyContent:'center', 
+              justifyContent: "center",
               m: 2,
             }}
           >
@@ -141,9 +148,9 @@ export const ItemDetail = ({ data }) => {
 
           <Button
             color="secondary"
-            sx={{ margin: "auto", fontSize: 10, mt: 1, mb: 1, display: 'flex'}}
+            sx={{ margin: "auto", fontSize: 14, mt: 1, mb: 1, display: "flex" }}
             type="submit"
-            variant="contained"  
+            variant="contained"
           >
             Add to Cart
           </Button>

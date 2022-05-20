@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/pikachu.png";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import { CartWidget } from "./CartWidget";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export const NavBar = () => {
   //Define menu values
@@ -23,9 +25,9 @@ export const NavBar = () => {
   ];
 
   const settings = [
-    { id: 1, name: "Account", route: "/account"},
-    { id: 2, name: "Orders", route: "/orders"}, 
-    { id: 3, name: "Logout", route: "/logout"},
+    { id: 1, name: "Account", route: "/account" },
+    { id: 2, name: "Orders", route: "/orders" },
+    { id: 3, name: "Logout", route: "/logout" },
   ];
 
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -170,7 +172,7 @@ export const NavBar = () => {
                   color: "white",
                   display: "block",
                   textTransform: "capitalize",
-                  fontSize: 16,
+                  fontSize: 20,
                   letterSpacing: ".2rem",
                   mx: 2,
                 }}
@@ -208,13 +210,13 @@ export const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem 
-                key={setting.id} 
-                onClick={() => {
-                  handleCloseUserMenu();
-                  navigate(`${setting.route}`);
-                }}
-                  >
+                <MenuItem
+                  key={setting.id}
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    navigate(`${setting.route}`);
+                  }}
+                >
                   <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
               ))}

@@ -15,11 +15,11 @@ export const Item = ({ dataItem }) => {
           borderRadius: 5,
           borderStyle: "groove",
           borderColor: "#f0f0f0",
-          display: { xs: "none", md: "block" },          
-        }}
-        
+          display: { xs: "none", md: "block" },   
+          m: 0.5   
+        }}        
       >
-        <ImageListItem sx={{}}>
+        <ImageListItem>
           <img
             src={dataItem.pictureUrl}
             srcSet={dataItem.pictureUrl}
@@ -59,6 +59,7 @@ export const Item = ({ dataItem }) => {
         
       </Card>
 
+
       {/* Card to responsive screens */}
       <Card
         sx={{
@@ -69,6 +70,7 @@ export const Item = ({ dataItem }) => {
           borderStyle: "groove",
           borderColor: "#f0f0f0",
           display: { xs: "block", md: "none" },
+          m: 0.5
         }}
       >
         <ImageListItem>
