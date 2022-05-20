@@ -1,44 +1,39 @@
-import { Container, ImageListItem, Typography } from "@mui/material";
+import { Button, Container, ImageListItem, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
 export const ItemDetail = ({ data }) => {
   return (
     <>
-
-      <Container sx={{ maxWidht: 1920}} component="div">
-      
-      {/* Screen size up to 900px */}
+      <Container maxWidth="3840px" component="div">
+        {/* Screen size up to 900px */}
         <Box
           sx={{
             float: "left",
             maxWidth: "50%",
-            display: { xs: "none", md: "inline-flex"},
+            display: { xs: "none", md: "inline-flex" },
           }}
         >
           <ImageListItem>
             <img
-              src={data.img}
-              srcSet={data.img}
+              src={data.pictureUrl}
+              srcSet={data.pictureUrl}
               alt={data.title}
               loading="lazy"
             />
           </ImageListItem>
         </Box>
 
-        <Box sx={{ p: 1 }}>
+        <Box sx={{ p: 4, mx: 2 }}>
           <Typography
             variant="title"
             align="center"
             display="flex"
             sx={{
-              fontWeight: 500,
-              fontSize: 30,
+              fontSize: 48,
               fontFamily: "fantasy",
               letterSpacing: ".05rem",
-              textDecoration: "none",
               display: { xs: "none", md: "block" },
-              m: 2
             }}
           >
             {data.title}
@@ -48,7 +43,7 @@ export const ItemDetail = ({ data }) => {
             variant="body1"
             display="flex"
             sx={{
-              fontSize: 18,
+              fontSize: 28,
               fontFamily: "monospace",
               display: { xs: "none", md: "block" },
               m: 2,
@@ -61,31 +56,46 @@ export const ItemDetail = ({ data }) => {
             variant="body2"
             display="flex"
             sx={{
-              fontSize: 22,
+              fontSize: 32,
               fontWeight: 600,
               fontFamily: "monospace",
               display: { xs: "none", md: "block" },
-              m: 2,
             }}
           >
             Price: US$ {data.price}
           </Typography>
+
+          <Button
+            color="secondary"
+            sx={{
+              margin: "auto",
+              mt: 1,
+              mb: 2,
+              fontSize: 12,
+              alignItems: "justify-end",
+              display: { xs: "none", md: "block" }
+            }}
+            type="submit"
+            variant="contained"
+            
+          >
+            Add to Cart
+          </Button>
         </Box>
 
-        
         {/* Screen size down to 900px */}
-        <Box sx={{ maxWidth: "100%", display: { xs: "flex", md: "none" }}}>
+        <Box sx={{ maxWidth: "100%", display: { xs: "flex", md: "none" } }}>
           <ImageListItem>
             <img
-              src={data.img}
-              srcSet={data.img}
+              src={data.pictureUrl}
+              srcSet={data.pictureUrl}
               alt={data.title}
               loading="lazy"
             />
           </ImageListItem>
         </Box>
 
-        <Box sx={{p: 1}} variant="div">
+        <Box sx={{ p: 1, display: { xs: "block", md: "none" } }} variant="div">
           <Typography
             variant="title"
             align="center"
@@ -96,8 +106,7 @@ export const ItemDetail = ({ data }) => {
               fontSize: 32,
               fontFamily: "fantasy",
               letterSpacing: ".05rem",
-              display: { xs: "block", md: "none" },
-              m: 2
+              mt: 2,
             }}
           >
             {data.title}
@@ -109,9 +118,8 @@ export const ItemDetail = ({ data }) => {
             sx={{
               fontSize: 18,
               fontFamily: "monospace",
-              display: { xs: "block", md: "none" },
-              textAlign: 'center',
-              m: 2,
+              textAlign: "center",
+              mt: 2,
             }}
           >
             {data.description}
@@ -124,15 +132,22 @@ export const ItemDetail = ({ data }) => {
               fontSize: 22,
               fontWeight: 600,
               fontFamily: "monospace",
-              textAlign: 'center',
-              display: { xs: "block", md: "none" },
+              justifyContent:'center', 
               m: 2,
             }}
           >
             Price: US$ {data.price}
           </Typography>
-        </Box>
 
+          <Button
+            color="secondary"
+            sx={{ margin: "auto", fontSize: 10, mt: 1, mb: 1, display: 'flex'}}
+            type="submit"
+            variant="contained"  
+          >
+            Add to Cart
+          </Button>
+        </Box>
       </Container>
     </>
   );

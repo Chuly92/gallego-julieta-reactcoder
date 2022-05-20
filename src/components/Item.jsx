@@ -1,24 +1,25 @@
 import React from "react";
 import { Button, Card, ImageListItem, Typography } from "@mui/material";
-import { ItemDetailContainer } from "./ItemDetailContainer";
 import { Link } from "react-router-dom";
 
 export const Item = ({ dataItem }) => {
   return (
     <>
       {/* Card to full size screens */}
-      <Card
-        sx={{
-          maxWidth: 240,
-          maxHeight: 350,
+
+      <Card 
+        sx={{          
+          maxWidth: 250,
+          height: 400,
           border: 4,
-          borderRadius: 4,
-          borderStyle: "double",
-          borderColor: "#8f8f8f",
-          display: { xs: "none", md: "block" },
+          borderRadius: 5,
+          borderStyle: "groove",
+          borderColor: "#f0f0f0",
+          display: { xs: "none", md: "block" },          
         }}
+        
       >
-        <ImageListItem>
+        <ImageListItem sx={{}}>
           <img
             src={dataItem.pictureUrl}
             srcSet={dataItem.pictureUrl}
@@ -48,7 +49,7 @@ export const Item = ({ dataItem }) => {
         <Link to={`/item/${dataItem.id}`} style={{ textDecoration: "none" }}>
         <Button
           color="secondary"
-          sx={{ display: "flex", margin: "auto", mt: 1, mb: 2, fontSize: 12 }}
+          sx={{ display: "flex", margin: "auto", mt: 1, mb: 2, fontSize: 12, alignItems: "justify-end" }}
           type="submit"
           variant="contained"
         >
@@ -62,11 +63,11 @@ export const Item = ({ dataItem }) => {
       <Card
         sx={{
           maxWidth: 160,
-          maxHeight: 250,
-          border: 3,
-          borderRadius: 3,
-          borderStyle: "double",
-          borderColor: "#8f8f8f",
+          maxHeight: 300,
+          border: 2,
+          borderRadius: 5,
+          borderStyle: "groove",
+          borderColor: "#f0f0f0",
           display: { xs: "block", md: "none" },
         }}
       >
@@ -83,7 +84,7 @@ export const Item = ({ dataItem }) => {
           variant="title"
           component="div"
           align="center"
-          sx={{ fontWeight: 500, fontSize: 14 }}
+          sx={{ fontWeight: 600, fontSize: 14 }}
         >
           {dataItem.title}
         </Typography>
@@ -92,7 +93,7 @@ export const Item = ({ dataItem }) => {
           variant="title"
           component="div"
           align="center"
-          sx={{ fontWeight: 500, fontSize: 12 }}
+          sx={{ fontWeight: 400, fontSize: 12, mt: 1 }}
         >
           US$ {dataItem.price}
         </Typography>
@@ -104,8 +105,6 @@ export const Item = ({ dataItem }) => {
             sx={{ display: "flex", margin: "auto", fontSize: 10, mt: 1, mb: 1 }}
             type="submit"
             variant="contained"
-            underline="none"
-            textDecoration="none"
           >
             View details
           </Button>

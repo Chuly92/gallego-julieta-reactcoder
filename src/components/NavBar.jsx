@@ -18,8 +18,8 @@ export const NavBar = () => {
   //Define menu values
   const pages = [
     { id: 1, name: "Home", route: "/" },
-    { id: 2, name: "Store", route: "/item" },
-    { id: 3, name: "New Arrivals", route: "/arrivals" },
+    { id: 2, name: "Store", route: "/item/all" },
+    { id: 3, name: "New Arrivals", route: "/item/all" },
   ];
 
   const settings = [
@@ -50,7 +50,7 @@ export const NavBar = () => {
 
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
-      <Container maxWidth="xl">
+      <Container maxWidth="3840px">
         <Toolbar disableGutters>
           {/* Render icon page in full-size window (width up to 900px) */}
           <IconButton
@@ -143,6 +143,7 @@ export const NavBar = () => {
                 fontFamily: "monospace",
                 color: "red",
                 textDecoration: "none",
+                fontSize: 24,
               }}
             >
               PikaStore
