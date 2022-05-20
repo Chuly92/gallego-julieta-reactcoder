@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Pagination } from "@mui/material";
 import { Item } from "./Item";
 
 export const ItemList = ({ data }) => {

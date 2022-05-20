@@ -1,3 +1,11 @@
+# Tienda de Pokemon especializada en Pikachu. Importamos elementos directo de Japón.
+
+## Desarrollada con  ReactJS y MaterialUI.
+<a href="https://reactjs.org/" rel="nofollow"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="70" height="70" style="max-width: 100%;"></a> &nbsp;&nbsp;
+<a href="https://mui.com/" rel="nofollow"> <img src="https://mui.com/static/logo.png" alt="mui" width="70" height="70" style="max-width: 100%;"></a> &nbsp;&nbsp;
+
+***
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

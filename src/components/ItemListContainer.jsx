@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import dataMock from "../products.json";
-import { CircularProgress, Typography } from "@mui/material";
+import { CircularProgress, Pagination, Typography } from "@mui/material";
 
 export const ItemListContainer = () => {
   const [data, setData] = useState([]);
@@ -61,7 +61,8 @@ export const ItemListContainer = () => {
       )}
 
       {error && "Error loading data"}
-      {data && <ItemList data={data} />}
+      {data && 
+      <ItemList data={data}/>}
     </>
   );
 };
