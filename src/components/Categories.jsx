@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Card,
   Container,
   Grid,
   ImageList,
@@ -27,7 +28,6 @@ export const Categories = () => {
   return (
     <>
       <Container maxWidth="3840px" component="div">
-        {/* Screen size up to 900px */}
 
         <Typography
           variant="title"
@@ -36,9 +36,7 @@ export const Categories = () => {
           sx={{
             fontSize: 38,
             fontFamily: "fantasy",
-            letterSpacing: ".05rem",
-            display: { xs: "none", md: "block" },
-            maxWidth: "100%",
+            letterSpacing: ".2rem",
             mt: 2,
           }}
         >
@@ -54,8 +52,7 @@ export const Categories = () => {
           alignContent="space-around"
         >
           {categories.map((cat, index) => (
-            <>
-              <ImageList sx={{ maxWidth: 600, maxHeight: 600 }} cols={1}>
+              <ImageList sx={{ maxWidth: 600, maxHeight: 600 }} cols={1} key={cat.id}>
                 <Link
                   to={`/category/${cat.id}`}
                 >
@@ -73,7 +70,6 @@ export const Categories = () => {
                   </ImageListItem>
                 </Link>
               </ImageList>
-            </>
           ))}
         </Grid>
       </Container>

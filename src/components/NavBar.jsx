@@ -48,6 +48,16 @@ export const NavBar = () => {
     setAnchorElUser(null);
   };
 
+  const handleNavigateMenu = (route) => {
+    handleCloseNavMenu();
+    navigate(`${route}`);
+  }
+
+  const handleSettingsMenu = (route) => { 
+    handleCloseUserMenu();
+    navigate(`${route}`);
+   }
+
   let navigate = useNavigate();
 
   return (
@@ -111,10 +121,7 @@ export const NavBar = () => {
               {pages.map((page) => (
                 <MenuItem
                   key={page.id}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    navigate(`${page.route}`);
-                  }}
+                  onClick={() => {handleNavigateMenu(page.route)}}
                 >
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
@@ -163,10 +170,7 @@ export const NavBar = () => {
           >
             {pages.map((page) => (
               <Button
-                onClick={() => {
-                  handleCloseNavMenu();
-                  navigate(`${page.route}`);
-                }}
+              onClick={() => {handleNavigateMenu(page.route)}}
                 key={page.id}
                 sx={{
                   color: "white",
@@ -212,10 +216,7 @@ export const NavBar = () => {
               {settings.map((setting) => (
                 <MenuItem
                   key={setting.id}
-                  onClick={() => {
-                    handleCloseUserMenu();
-                    navigate(`${setting.route}`);
-                  }}
+                  onClick={() => {handleSettingsMenu(setting.route)}}
                 >
                   <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
