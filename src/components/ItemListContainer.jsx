@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import dataMock from "../products.json";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 
 export const ItemListContainer = () => {
   const [data, setData] = useState([]);
@@ -38,11 +38,25 @@ export const ItemListContainer = () => {
 
   return (
     <>
-      {loading && ( 
+      <Typography
+        variant="title"
+        align="center"
+        display="block"
+        sx={{
+          fontSize: 38,
+          fontFamily: "fantasy",
+          letterSpacing: ".2rem",
+          mt: 2,
+        }}
+      >
+        Store
+      </Typography>
+
+      {loading && (
         <>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-          <CircularProgress size='60px' sx={{m: 2}} color="secondary" />
-        </div> 
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress size="60px" sx={{ m: 2 }} color="secondary" />
+          </div>
         </>
       )}
 
