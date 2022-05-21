@@ -1,6 +1,6 @@
 import React from "react";
+import categories from "../data/categories.json";
 import {
-  Card,
   Container,
   Grid,
   ImageList,
@@ -11,19 +11,6 @@ import {
 import { Link } from "react-router-dom";
 
 export const Categories = () => {
-  const categories = [
-    {
-      id: 1,
-      name: "Plush",
-      imgUrl: "https://pokemon.originalstitch.com/en/img/info/20200306.jpg",
-    },
-    {
-      id: 2,
-      name: "Customes",
-      imgUrl:
-        "https://www.pokemoncenter.com/site/binaries/content/gallery/bloomreach/home/explore-more/04-april-2022/202204_visnav_plush.jpg",
-    },
-  ];
 
   return (
     <>

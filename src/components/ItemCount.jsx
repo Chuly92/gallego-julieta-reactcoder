@@ -1,17 +1,7 @@
 import React, { useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Button, ButtonGroup, IconButton } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import { Box } from "@mui/system";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
   const [counter, setCounter] = useState(initial);
@@ -28,80 +18,61 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
 
   const handleSubtractItem = (e) => {
     e.preventDefault();
-
     if (counter > 0) setCounter(counter - 1);
   };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    counter > 0
-      ? alert("Added to cart")
-      : alert("You have to add an item to add");
+
+    if (counter > 0) {
+      onAdd(e);
+    } else{
+      alert("Please add an item");
+    }
   };
+
 
   return (
     <>
-      <Card
-        sx={{
-          maxWidth: 200,
-          maxHeight: 400,
-          mx: 2,
-          border: 4,
-          borderRadius: 4,
-          borderStyle: "double",
-          borderColor: "#8f8f8f",
-        }}
-      >
-        <CardMedia component="img" image="/storeItem1.png" alt="image" />
-
-        <CardContent sx={{ alignItems: "center" }}>
-          <Typography
-            variant="title"
-            component="div"
-            align="center"
-            sx={{ mb: 1, fontWeight: 500 }}
-          >
-            Pikachu Plush
-          </Typography>
-
-          <ButtonGroup
-            sx={{
-              alignItems: "center",
-              width: "100%",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <IconButton
-              aria-label="add"
-              color="secondary"
-              onClick={handleSubtractItem}
-            >
-              <RemoveCircleIcon />
-            </IconButton>
-
-            <Box sx={{ display: "grid" }}>{counter}</Box>
-
-            <IconButton
-              aria-label="delete"
-              color="secondary"
-              onClick={handleAddItem}
-            >
-              <AddCircleIcon />
-            </IconButton>
-          </ButtonGroup>
-        </CardContent>
-        <CardActions>
-          <Button
+      <Box sx={{ mt: 2, border: "none" }}>
+        <ButtonGroup
+          sx={{
+            alignItems: "center",
+            width: "100%",
+            justifyContent: "center",
+          }}
+        >
+          <IconButton
+            aria-label="subtract"
             color="secondary"
-            sx={{ display: "flex", margin: "0 auto" }}
-            onClick={handleAddToCart}
-            type="submit"
-            variant="contained"
+            onClick={handleSubtractItem}
+            sx={{ mx: 1 }}
           >
-            Add to Cart
-          </Button>
-        </CardActions>
-      </Card>
+            <RemoveCircleIcon />
+          </IconButton>
+
+          <Box sx={{ display: "grid" }}>{counter}</Box>
+
+          <IconButton
+            aria-label="add"
+            color="secondary"
+            onClick={handleAddItem}
+            sx={{ mx: 1 }}
+          >
+            <AddCircleIcon />
+          </IconButton>
+        </ButtonGroup>
+
+        <Button
+          color="secondary"
+          sx={{ display: "flex", margin: "0 auto", mt: 1 }}
+          onClick={handleAddToCart}
+          type="submit"
+          variant="contained"
+        >
+          Add to Cart
+        </Button>
+      </Box>
     </>
   );
 };

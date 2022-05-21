@@ -1,14 +1,25 @@
 import {
-  Button,
   Container,
   Grid,
   ImageListItem,
   Typography,
 } from "@mui/material";
-import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ItemCount } from "./ItemCount";
 
 export const ItemDetail = ({ data }) => {
+
+  const [showItemCount, setShowItemCount] = useState(true);
+
+  const onAdd = (e) => {
+    //Here will add the item to the number on cart icon
+    setShowItemCount(false);
+  } 
+  
+  useEffect((e) => {
+    if (!showItemCount) alert('Item added to cart!');
+  }, [showItemCount])
+    
   return (
     <>
       <Container maxWidth="3840px" component="div">
@@ -38,12 +49,13 @@ export const ItemDetail = ({ data }) => {
           sx={{ mt: 2, display: { xs: "none", md: "flex" } }}
         >
           <Grid item xs={8}>
-            <ImageListItem>
+            <ImageListItem sx={{textDecoration: 'none'}}>
               <img
                 src={data.pictureUrl}
                 srcSet={data.pictureUrl}
                 alt={data.title}
                 loading="lazy"
+
               />
             </ImageListItem>
           </Grid>
@@ -72,29 +84,18 @@ export const ItemDetail = ({ data }) => {
             >
               Price: US$ {data.price}
             </Typography>
+            
+            { showItemCount &&            
+              <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+            }
 
-            <Button
-              color="secondary"
-              sx={{
-                margin: "auto",
-                mt: 2,
-                mb: 2,
-                fontSize: 12,
-                display: { xs: "none", md: "flex" },
-              }}
-              type="submit"
-              variant="contained"
-              disabled
-            >
-              Add to Cart
-            </Button>
           </Grid>
         </Grid>
 
         {/* Screen size down to 900px */}
 
-        <Box sx={{ maxWidth: "100%", display: { xs: "flex", md: "none" } }}>
-          <ImageListItem>
+        <Grid sx={{ maxWidth: "100%", display: { xs: "flex", md: "none" } }}>
+          <ImageListItem sx={{textDecoration: 'none'}}>
             <img
               src={data.pictureUrl}
               srcSet={data.pictureUrl}
@@ -102,9 +103,9 @@ export const ItemDetail = ({ data }) => {
               loading="lazy"
             />
           </ImageListItem>
-        </Box>
+        </Grid>
 
-        <Box sx={{ p: 1, display: { xs: "block", md: "none" } }} variant="div">
+        <Grid sx={{ p: 1, display: { xs: "block", md: "none" } }} variant="div">
           <Typography
             variant="title"
             display="flex"
@@ -114,7 +115,7 @@ export const ItemDetail = ({ data }) => {
               fontFamily: "fantasy",
               letterSpacing: ".05rem",
               mt: 2,
-              textAlign: "center",
+              justifyContent: "center"
             }}
           >
             {data.title}
@@ -147,16 +148,12 @@ export const ItemDetail = ({ data }) => {
             Price: US$ {data.price}
           </Typography>
 
-          <Button
-            color="secondary"
-            sx={{ margin: "auto", fontSize: 14, mt: 1, mb: 1, display: "flex" }}
-            type="submit"
-            variant="contained"
-            disabled
-          >
-            Add to Cart
-          </Button>
-        </Box>
+          { showItemCount &&            
+              <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+          }
+          
+        </Grid>      
+
       </Container>
     </>
   );

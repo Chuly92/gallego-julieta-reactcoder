@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
-import dataMock from "../products.json";
+import dataMock from "../data/products.json";
 import { CircularProgress } from "@mui/material";
 
 export const ItemDetailContainer = () => {
