@@ -3,8 +3,11 @@ import React, { createContext, useEffect, useState } from "react";
 export const cartContext = createContext(undefined);
 
 export const ContextHOC = ({ children }) => {
+
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
+
+  let savedCart = sessionStorage.getItem('savedCart');
 
   const addItem = (item) => {
     if (isInCart(item)) {
@@ -38,7 +41,10 @@ export const ContextHOC = ({ children }) => {
   };
 
   useEffect(() => {
+    
     if (cart.length !== 0) {
+      // saveSessionCart();
+
       let totalItems = 0;
       const sumItems = cart.map((item) => {
         totalItems += item.qtyItem;
@@ -46,6 +52,10 @@ export const ContextHOC = ({ children }) => {
       setQtyItemsCart(totalItems);
     }
   }, [cart]);
+  
+  // const saveSessionCart = () => { 
+  //   sessionStorage.setItem('savedCart', JSON.stringify(cart));
+  //  };
 
   return (
     <>
