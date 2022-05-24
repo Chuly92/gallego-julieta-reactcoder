@@ -3,11 +3,8 @@ import React, { createContext, useEffect, useState } from "react";
 export const cartContext = createContext(undefined);
 
 export const ContextHOC = ({ children }) => {
-
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
-
-  let savedCart = sessionStorage.getItem('savedCart');
 
   const addItem = (item) => {
     if (isInCart(item)) {
@@ -41,21 +38,38 @@ export const ContextHOC = ({ children }) => {
   };
 
   useEffect(() => {
-    
-    if (cart.length !== 0) {
-      // saveSessionCart();
+
+    if (cart.length > 0) {
+      console.log('Entro al if');
+      console.log(cart.length);
 
       let totalItems = 0;
       const sumItems = cart.map((item) => {
         totalItems += item.qtyItem;
       });
       setQtyItemsCart(totalItems);
+      saveSessionCart(cart);
+
+    } else {
+      console.log('Entro al else');
+      
+      //Check if I have a cart stored
+      const sessionCart = loadSessionCart();
+      !sessionCart || setCart(sessionCart);
+      console.log(cart.length);
     }
   }, [cart]);
-  
-  // const saveSessionCart = () => { 
-  //   sessionStorage.setItem('savedCart', JSON.stringify(cart));
-  //  };
+
+
+  const loadSessionCart = () => {
+    let savedCart = JSON.parse(sessionStorage.getItem("savedCart"));
+    console.log(savedCart);
+    return savedCart;
+  };
+
+  const saveSessionCart = (cart) => {
+    sessionStorage.setItem("savedCart", JSON.stringify(cart));
+  };
 
   return (
     <>
