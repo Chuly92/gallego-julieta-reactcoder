@@ -114,6 +114,7 @@ export const ItemDetail = ({ data }) => {
           <Typography
             variant="title"
             display="flex"
+            align="center"
             sx={{
               fontWeight: 500,
               fontSize: 32,
