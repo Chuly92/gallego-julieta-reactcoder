@@ -40,8 +40,6 @@ export const ContextHOC = ({ children }) => {
   useEffect(() => {
 
     if (cart.length > 0) {
-      console.log('Entro al if');
-      console.log(cart.length);
 
       let totalItems = 0;
       const sumItems = cart.map((item) => {
@@ -51,19 +49,16 @@ export const ContextHOC = ({ children }) => {
       saveSessionCart(cart);
 
     } else {
-      console.log('Entro al else');
       
       //Check if I have a cart stored
       const sessionCart = loadSessionCart();
       !sessionCart || setCart(sessionCart);
-      console.log(cart.length);
     }
   }, [cart]);
 
 
   const loadSessionCart = () => {
     let savedCart = JSON.parse(sessionStorage.getItem("savedCart"));
-    console.log(savedCart);
     return savedCart;
   };
 
