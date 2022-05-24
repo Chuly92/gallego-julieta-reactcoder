@@ -5,10 +5,12 @@ import { Categories } from "./components/Categories";
 import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { ItemListContainer } from "./components/ItemListContainer";
 import { Cart } from "./components/Cart";
+import { ContextHOC } from "./contexts/ContextHOC";
 
 function App() {
   return (
     <>
+    <ContextHOC>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -23,6 +25,7 @@ function App() {
           <Route path="/*" element={<h2 style={{textAlign: 'center'}}>Error 404 - Invalid URL</h2>} />
         </Routes>
       </BrowserRouter>
+      </ContextHOC>
     </>
   );
 }

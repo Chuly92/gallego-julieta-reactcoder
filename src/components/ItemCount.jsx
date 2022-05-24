@@ -25,7 +25,7 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
     e.preventDefault();
 
     if (counter > 0) {
-      onAdd(e);
+      onAdd(counter);
     } else{
       alert("Please add an item");
     }

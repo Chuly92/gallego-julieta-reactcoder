@@ -4,15 +4,20 @@ import {
   ImageListItem,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import {useEffect, useState, useContext} from 'react';
 import { ItemCount } from "./ItemCount";
+import { cartContext } from "../contexts/ContextHOC";
 
 export const ItemDetail = ({ data }) => {
 
   const [showItemCount, setShowItemCount] = useState(true);
+  const { addItem } = useContext(cartContext);
 
-  const onAdd = (e) => {
+  const onAdd = (qtyItem) => {
     //Here will add the item to the number on cart icon
+    const dataItem = {data, qtyItem}
+
+    addItem(dataItem);
     setShowItemCount(false);
   } 
   

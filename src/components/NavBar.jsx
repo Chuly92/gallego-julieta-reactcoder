@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/pikachu.png";
 import { CartWidget } from "./CartWidget";
@@ -15,8 +15,13 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { cartContext } from "../contexts/ContextHOC";
 
 export const NavBar = () => {
+  let navigate = useNavigate();
+
+  const { qtyItemsCart } = useContext(cartContext);
+
   //Define menu values
   const pages = [
     { id: 1, name: "Home", route: "/" },
@@ -51,14 +56,12 @@ export const NavBar = () => {
   const handleNavigateMenu = (route) => {
     handleCloseNavMenu();
     navigate(`${route}`);
-  }
+  };
 
-  const handleSettingsMenu = (route) => { 
+  const handleSettingsMenu = (route) => {
     handleCloseUserMenu();
     navigate(`${route}`);
-   }
-
-  let navigate = useNavigate();
+  };
 
   return (
     <AppBar position="static" sx={{ bgcolor: "black" }}>
@@ -121,7 +124,9 @@ export const NavBar = () => {
               {pages.map((page) => (
                 <MenuItem
                   key={page.id}
-                  onClick={() => {handleNavigateMenu(page.route)}}
+                  onClick={() => {
+                    handleNavigateMenu(page.route);
+                  }}
                 >
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
@@ -170,7 +175,9 @@ export const NavBar = () => {
           >
             {pages.map((page) => (
               <Button
-              onClick={() => {handleNavigateMenu(page.route)}}
+                onClick={() => {
+                  handleNavigateMenu(page.route);
+                }}
                 key={page.id}
                 sx={{
                   color: "white",
@@ -188,7 +195,9 @@ export const NavBar = () => {
 
           {/* Insert shopping cart */}
           <Button>
-            <CartWidget qtyItems={"3"} />
+            <CartWidget qtyItems={
+              qtyItemsCart === 0 ? "0" : qtyItemsCart
+              } />
           </Button>
 
           {/* Render user settings for all screens */}
@@ -216,7 +225,9 @@ export const NavBar = () => {
               {settings.map((setting) => (
                 <MenuItem
                   key={setting.id}
-                  onClick={() => {handleSettingsMenu(setting.route)}}
+                  onClick={() => {
+                    handleSettingsMenu(setting.route);
+                  }}
                 >
                   <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
