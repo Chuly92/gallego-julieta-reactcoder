@@ -14,7 +14,7 @@ export const ItemDetail = ({ data }) => {
   const { addItem } = useContext(cartContext);
 
   const onAdd = (qtyItem) => {
-    //Here will add the item to the number on cart icon
+
     const dataItem = {data, qtyItem}
 
     addItem(dataItem);

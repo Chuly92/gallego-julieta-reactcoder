@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { cartContext } from "../contexts/ContextHOC";
 import { Box, Grid, Typography, Button } from "@mui/material";
 import { CartItem } from "./CartItem";
@@ -6,10 +6,6 @@ import { Link } from "react-router-dom";
 
 export const Cart = () => {
   const { cart, totalPriceCart } = useContext(cartContext);
-
-  // useEffect(() => {
-  //   console.log("helloWorld");
-  // }, [cart]);
 
   return (
     <>
