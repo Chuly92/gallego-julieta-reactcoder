@@ -10,7 +10,7 @@ export const Item = ({ dataItem }) => {
       <Card 
         sx={{          
           maxWidth: 250,
-          height: 400,
+          height: 380,
           border: 1,
           borderRadius: 5,
           borderColor: "#fcb3e2",
@@ -84,7 +84,7 @@ export const Item = ({ dataItem }) => {
           variant="title"
           component="div"
           align="center"
-          sx={{ fontWeight: 600, fontSize: 14 }}
+          sx={{ fontWeight: 600, fontSize: 14, minHeight: 55 }}
         >
           {dataItem.title}
         </Typography>
@@ -102,7 +102,7 @@ export const Item = ({ dataItem }) => {
           <Button
             color="secondary"
             size="small"
-            sx={{ display: "flex", margin: "auto", fontSize: 10, mt: 1, mb: 1 }}
+            sx={{ display: "flex", margin: "auto", fontSize: 10, mt: 1, mb: 1}}
             type="submit"
             variant="contained"
           >

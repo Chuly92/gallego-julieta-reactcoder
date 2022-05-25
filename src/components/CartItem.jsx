@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import { useContext, useEffect } from "react";
 import {
   Button,
   ImageListItem,
@@ -9,20 +9,17 @@ import {
 import { cartContext } from "../contexts/ContextHOC";
 
 export const CartItem = ({ dataItem }) => {
-
-  const {cart, removeItem} = useContext(cartContext);
-
-  // useEffect(() => {
-  //   console.log('helloWorld');
-
-  // }, [cart]);
+  const { removeItem } = useContext(cartContext);
 
   return (
     <>
       {/* Card to full size screens */}
 
-      <Container maxWidth="3840px" component="div" 
-      sx={{ ml: 5, mr: 5 }}>
+      <Container
+        maxWidth="3840px"
+        component="div"
+        sx={{ display: { xs: "none", lg: "flex" }, ml: 5, mr: 5 }}
+      >
         <Grid
           maxWidth="100%"
           container
@@ -89,30 +86,123 @@ export const CartItem = ({ dataItem }) => {
               align="center"
               sx={{ mt: 2, fontWeight: 500, fontSize: 20 }}
             >
-              Total Item: US$ {dataItem.data.price * dataItem.qtyItem}
+              Total Item: US${" "}
+              {(dataItem.data.price * dataItem.qtyItem).toFixed(2)}
             </Typography>
 
-              <Button
-                color="secondary"
-                sx={{
-                  display: "flex",
-                  margin: "auto",
-                  mt: 2,
-                  fontSize: 14,
-                  alignItems: "justify-end",
-                }}
-                type="submit"
-                variant="contained"
-                onClick={(e) => {
-                  e.preventDefault();
-                  removeItem(dataItem);
-                  
-                }
-                }
-              >
-                Remove Items
-              </Button>
+            <Button
+              color="secondary"
+              sx={{
+                display: "flex",
+                margin: "auto",
+                mt: 2,
+                fontSize: 14,
+                alignItems: "justify-end",
+              }}
+              type="submit"
+              variant="contained"
+              onClick={(e) => {
+                e.preventDefault();
+                removeItem(dataItem);
+              }}
+            >
+              Remove Items
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
 
+      {/* Card to screens down to 1200px */}
+      <Container component="div" sx={{ display: { xs: "flex", lg: "none" },
+    maxWidth: 800, maxHeight: 300 }}>
+        <Grid
+          container
+          spacing={2}
+          columns={16}
+          sx={{
+            mt: 2,
+            p: 1,
+            display: "flex",
+            border: 2,
+            borderRadius: 10,
+            borderColor: "#fcb3e2",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Grid item xs={4}>
+            <ImageListItem
+              sx={{
+                maxWidth: 250,
+                maxHeight: 220,
+              }}
+            >
+              <img
+                src={dataItem.data.pictureUrl}
+                srcSet={dataItem.data.pictureUrl}
+                alt={dataItem.data.title}
+                loading="lazy"
+              />
+            </ImageListItem>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography
+              variant="title"
+              component="div"
+              align="center"
+              sx={{ fontWeight: 500, fontSize: 22, mb: 1, mt: 1 }}
+            >
+              {dataItem.data.title}
+            </Typography>
+
+            <Typography
+              variant="title"
+              component="div"
+              align="center"
+              sx={{ mb: 1, fontWeight: 500, fontSize: 16, color: "#575757" }}
+            >
+              Unit Price: US$ {dataItem.data.price}
+            </Typography>
+
+            <Typography
+              variant="title"
+              component="div"
+              align="center"
+              sx={{ mb: 1, fontWeight: 500, fontSize: 16, color: "#575757" }}
+            >
+              Quantity: {dataItem.qtyItem}
+            </Typography>
+
+            <Typography
+              variant="title"
+              component="div"
+              align="center"
+              sx={{ mt: 1, fontWeight: 500, fontSize: 16 }}
+            >
+              Total Item: US${" "}
+              {(dataItem.data.price * dataItem.qtyItem).toFixed(2)}
+            </Typography>
+
+            <Button
+              color="secondary"
+              sx={{
+                display: "flex",
+                margin: "auto",
+                mt: 1,
+                mb: 1,
+                fontSize: 10,
+                alignItems: "justify-end",
+              }}
+              type="submit"
+              variant="contained"
+              onClick={(e) => {
+                e.preventDefault();
+                removeItem(dataItem);
+              }}
+            >
+              Remove Items
+            </Button>
           </Grid>
         </Grid>
       </Container>

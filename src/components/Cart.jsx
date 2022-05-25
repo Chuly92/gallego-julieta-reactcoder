@@ -29,7 +29,8 @@ export const Cart = () => {
 
       {cart.length > 0 ? (
         <>
-          <Grid container sx={{ m: 2, border: "none" }}>
+          {/* Screens up to 1200px width */}
+          <Grid container sx={{ m: 2, border: "none", display: { xs: 'none', lg: 'flex'} }}>
             <Box sx={{ minWidth: 3 / 4, maxWidth: 3 / 4 }}>
               {cart.map((e, index) => (
                 <CartItem key={index} dataItem={e} />
@@ -61,7 +62,7 @@ export const Cart = () => {
                 US$ {totalPriceCart.toFixed(2)}
               </Typography>
 
-              <Link to={`/checkout`}>
+              <Link to={`/checkout`} style={{ textDecoration: "none" }}>
                 <Button
                   color="secondary"
                   sx={{
@@ -80,7 +81,65 @@ export const Cart = () => {
               </Link>
             </Box>
           </Grid>
+
+
+
+          {/* Screens down to 1200px width */}
+          <Grid container sx={{ display: {xs: 'block', lg: 'none'} }}>
+            <Box>
+              {cart.map((e, index) => (
+                <CartItem key={index} dataItem={e} />
+              ))}
+            </Box>
+
+            <Box>
+              <Typography
+                variant="title"
+                sx={{
+                  mb: 2,
+                  mt: 4,
+                  fontWeight: 600,
+                  fontSize: 26,
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                Total Cart
+              </Typography>
+              <Typography
+                variant="title"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: 24,
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                US$ {totalPriceCart.toFixed(2)}
+              </Typography>
+
+              <Link to={`/checkout`} style={{ textDecoration: "none" }}>
+                <Button
+                  color="secondary"
+                  sx={{
+                    display: "flex",
+                    margin: "auto",
+                    mt: 2,
+                    mb: 4,
+                    fontSize: 12,
+                    alignItems: "justify-end",
+                  }}
+                  type="submit"
+                  variant="contained"
+                >
+                  Continue Checkout
+                </Button>
+              </Link>
+            </Box>
+
+          </Grid>
         </>
+
       ) : (
         <Grid container sx={{ mt: 2, mb: 2 }}>
           <Box sx={{ bgcolor: "#ffe3fc" }}>
