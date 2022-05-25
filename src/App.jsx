@@ -5,6 +5,7 @@ import { Categories } from "./components/Categories";
 import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { ItemListContainer } from "./components/ItemListContainer";
 import { Cart } from "./components/Cart";
+import {Checkout} from "./components/Checkout";
 import { ContextHOC } from "./contexts/ContextHOC";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/category/:id" element={<ItemListContainer/>} />
 
           <Route path="/cart" element={<Cart/>} />
+          <Route path="/checkout" element={<Checkout/>} />
 
           <Route path="/*" element={<h2 style={{textAlign: 'center'}}>Error 404 - Invalid URL</h2>} />
         </Routes>

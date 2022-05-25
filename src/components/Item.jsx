@@ -11,10 +11,9 @@ export const Item = ({ dataItem }) => {
         sx={{          
           maxWidth: 250,
           height: 400,
-          border: 4,
+          border: 1,
           borderRadius: 5,
-          borderStyle: "groove",
-          borderColor: "#f0f0f0",
+          borderColor: "#fcb3e2",
           display: { xs: "none", md: "block" },   
           m: 0.5   
         }}        
@@ -65,10 +64,9 @@ export const Item = ({ dataItem }) => {
         sx={{
           maxWidth: 160,
           maxHeight: 300,
-          border: 2,
+          border: 1,
           borderRadius: 5,
-          borderStyle: "groove",
-          borderColor: "#f0f0f0",
+          borderColor: "#fcb3e2",
           display: { xs: "block", md: "none" },
           m: 0.5
         }}

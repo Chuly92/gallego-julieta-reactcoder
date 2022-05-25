@@ -5,6 +5,8 @@ export const cartContext = createContext(undefined);
 export const ContextHOC = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
+  const [totalPriceCart, setTotalPriceCart] = useState(0);
+  const [isRemoveItem, setIsRemoveItem] = useState(false);
 
   const addItem = (item) => {
     if (isInCart(item)) {
@@ -22,9 +24,15 @@ export const ContextHOC = ({ children }) => {
   };
 
   const removeItem = (item) => {
-    if (isInCart) {
+    if (isInCart(item)) {
+      setIsRemoveItem(true);
       const filteredCart = cart.filter((e) => e.data.id !== item.data.id);
-      setCart([filteredCart]);
+
+      saveSessionCart(cart);
+      setCart(filteredCart);
+      return filteredCart;
+    } else {
+      alert("Some error has occured by deleting the item. Please try again");
     }
   };
 
@@ -38,24 +46,26 @@ export const ContextHOC = ({ children }) => {
   };
 
   useEffect(() => {
-
     if (cart.length > 0) {
-
       let totalItems = 0;
+      let totalPriceItems = 0;
+
       const sumItems = cart.map((item) => {
         totalItems += item.qtyItem;
+        totalPriceItems += item.data.price * item.qtyItem;
       });
-      setQtyItemsCart(totalItems);
-      saveSessionCart(cart);
 
+      setQtyItemsCart(totalItems);
+      setTotalPriceCart(totalPriceItems);
+      saveSessionCart(cart);
     } else {
-      
-      //Check if I have a cart stored
-      const sessionCart = loadSessionCart();
-      !sessionCart || setCart(sessionCart);
+      //Check sessionStorage / If I'm deleting all the cart
+      if (!isRemoveItem) {
+        const sessionCart = loadSessionCart();
+        !sessionCart || setCart(sessionCart);
+      }
     }
   }, [cart]);
-
 
   const loadSessionCart = () => {
     let savedCart = JSON.parse(sessionStorage.getItem("savedCart"));
@@ -75,6 +85,7 @@ export const ContextHOC = ({ children }) => {
           removeItem,
           clear,
           qtyItemsCart,
+          totalPriceCart,
         }}
       >
         {children}
