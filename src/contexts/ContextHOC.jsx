@@ -63,9 +63,12 @@ export const ContextHOC = ({ children }) => {
       if (!isRemoveItem) {
         const sessionCart = loadSessionCart();
         !sessionCart || setCart(sessionCart);
+      } else {
+        sessionStorage.clear();
+        setQtyItemsCart(0);
       }
     }
-  }, [cart]);
+  }, [cart, isRemoveItem]);
 
   const loadSessionCart = () => {
     let savedCart = JSON.parse(sessionStorage.getItem("savedCart"));
