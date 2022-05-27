@@ -65,7 +65,7 @@ export const Categories = () => {
         >
           {categories.map((cat, index) => (
             <ImageList
-              sx={{ maxWidth: 600, maxHeight: 600 }}
+              sx={{ maxWidth: 600, maxHeight: 600, borderRadius: 5, boxShadow: 5 }}
               cols={1}
               key={cat.id}
             >

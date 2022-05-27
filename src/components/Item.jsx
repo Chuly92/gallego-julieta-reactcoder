@@ -11,9 +11,8 @@ export const Item = ({ dataItem }) => {
         sx={{          
           maxWidth: 250,
           height: 380,
-          border: 1,
           borderRadius: 5,
-          borderColor: "#fcb3e2",
+          boxShadow: 5,
           display: { xs: "none", md: "block" },   
           m: 0.5   
         }}        
@@ -64,9 +63,8 @@ export const Item = ({ dataItem }) => {
         sx={{
           maxWidth: 160,
           maxHeight: 300,
-          border: 1,
           borderRadius: 5,
-          borderColor: "#fcb3e2",
+          boxShadow: 5,
           display: { xs: "block", md: "none" },
           m: 0.5
         }}
@@ -75,7 +73,7 @@ export const Item = ({ dataItem }) => {
           <img
             src={dataItem.pictureUrl}
             srcSet={dataItem.pictureUrl}
-            alt={dataItem.title}
+            alt={dataItem.name}
             loading="lazy"
           />
         </ImageListItem>
@@ -86,7 +84,7 @@ export const Item = ({ dataItem }) => {
           align="center"
           sx={{ fontWeight: 600, fontSize: 14, minHeight: 55 }}
         >
-          {dataItem.title}
+          {dataItem.name}
         </Typography>
 
         <Typography

@@ -28,9 +28,8 @@ export const CartItem = ({ dataItem }) => {
           sx={{
             mt: 2,
             display: "flex",
-            border: 2,
-            borderRadius: 10,
-            borderColor: "#fcb3e2",
+            boxShadow: 10,
+            borderRadius: 5,
           }}
         >
           <Grid item xs={6}>
@@ -46,7 +45,7 @@ export const CartItem = ({ dataItem }) => {
               <img
                 src={dataItem.data.pictureUrl}
                 srcSet={dataItem.data.pictureUrl}
-                alt={dataItem.data.title}
+                alt={dataItem.data.name}
                 loading="lazy"
               />
             </ImageListItem>
@@ -59,7 +58,7 @@ export const CartItem = ({ dataItem }) => {
               align="center"
               sx={{ fontWeight: 500, fontSize: 28, mb: 2, mt: 2 }}
             >
-              {dataItem.data.title}
+              {dataItem.data.name}
             </Typography>
 
             <Typography
@@ -123,9 +122,8 @@ export const CartItem = ({ dataItem }) => {
             mt: 2,
             p: 1,
             display: "flex",
-            border: 2,
-            borderRadius: 10,
-            borderColor: "#fcb3e2",
+            boxShadow: 10,
+            borderRadius: 5,
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -140,7 +138,7 @@ export const CartItem = ({ dataItem }) => {
               <img
                 src={dataItem.data.pictureUrl}
                 srcSet={dataItem.data.pictureUrl}
-                alt={dataItem.data.title}
+                alt={dataItem.data.name}
                 loading="lazy"
               />
             </ImageListItem>
@@ -153,7 +151,7 @@ export const CartItem = ({ dataItem }) => {
               align="center"
               sx={{ fontWeight: 500, fontSize: 22, mb: 1, mt: 1 }}
             >
-              {dataItem.data.title}
+              {dataItem.data.name}
             </Typography>
 
             <Typography

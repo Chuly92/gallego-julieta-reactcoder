@@ -26,14 +26,14 @@ export const Cart = () => {
       {cart.length > 0 ? (
         <>
           {/* Screens up to 1200px width */}
-          <Grid container sx={{ m: 2, border: "none", display: { xs: 'none', lg: 'flex'} }}>
+          <Grid container sx={{ display: { xs: 'none', lg: 'flex'}, mb: 4}}>
             <Box sx={{ minWidth: 3 / 4, maxWidth: 3 / 4 }}>
               {cart.map((e, index) => (
                 <CartItem key={index} dataItem={e} />
               ))}
             </Box>
 
-            <Box sx={{ minWidth: 1 / 4, maxWidth: 1 / 4, mt: 2 }}>
+            <Box sx={{ minWidth: 1 / 4, maxWidth: 1 / 4, mt: 8 }}>
               <Typography
                 variant="title"
                 sx={{
@@ -81,7 +81,7 @@ export const Cart = () => {
 
 
           {/* Screens down to 1200px width */}
-          <Grid container sx={{ display: {xs: 'block', lg: 'none'} }}>
+          <Grid container sx={{ display: {xs: 'block', lg: 'none'}}}>
             <Box>
               {cart.map((e, index) => (
                 <CartItem key={index} dataItem={e} />
@@ -138,7 +138,7 @@ export const Cart = () => {
 
       ) : (
         <Grid container sx={{ mt: 2, mb: 2 }}>
-          <Box sx={{ bgcolor: "#ffe3fc" }}>
+          <Box sx={{ bgcolor: "#faedf8", borderRadius: 5, boxShadow: 10, textAlign: "center", mx: 4 }}>
             <Typography
               sx={{
                 display: "flex",
