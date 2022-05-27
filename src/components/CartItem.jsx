@@ -112,7 +112,7 @@ export const CartItem = ({ dataItem }) => {
       </Container>
 
       {/* Card to screens down to 1200px */}
-      <Container component="div" sx={{ display: { xs: "flex", lg: "none" },
+      <Container component="div" sx={{ display: { xs: "flex", lg: "none" }, ml: 1, 
     maxWidth: 800, maxHeight: 300 }}>
         <Grid
           container

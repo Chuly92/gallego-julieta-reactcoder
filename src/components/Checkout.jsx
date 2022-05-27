@@ -56,17 +56,15 @@ export const Checkout = () => {
           sx={{
             borderRadius: 5,
             boxShadow: 5,
-            p: 2,
+            p: 1,
             bgcolor: "#f2f0f2",
           }}
         >
-
-        {/* Screen resolution up to 1200px */}
           <Grid
             container
             spacing={2}
-            columns={10}
-            sx={{ mt: 2, display: {xs: "none", md: "flex"} }}
+            columns={{ xs: 2, md: 10 }}
+            sx={{ mt: 2, display: "flex" }}
           >
             <Grid item xs={5} sx={{ textAlign: "center" }}>
               <Typography variant="h5" component="div">
@@ -126,103 +124,6 @@ export const Checkout = () => {
                   value={formData.email}
                   name="email"
                   placeholder="Insert a valid email. Example: hello@gmail.com"
-                />
-                <TextField
-                  required
-                  color="secondary"
-                  focused
-                  label="Phone"
-                  onChange={handleChange}
-                  value={formData.phone}
-                  name="phone"
-                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-                />
-
-                <Button
-                  color="secondary"
-                  sx={{
-                    display: "flex",
-                    margin: "auto",
-                    mt: 4,
-                    mb: 4,
-                    fontSize: 16,
-                    alignItems: "justify-end",
-                  }}
-                  type="submit"
-                  variant="contained"
-                  onSubmit={handleSubmit}
-                >
-                  Proceed to payment
-                </Button>
-              </FormControl>
-            </Grid>
-          </Grid>
-
-          {/* Screen resolution down to 1200px */}
-          <Grid
-            container
-            spacing={2}
-            columns={2}
-            sx={{ mt: 2, display: {xs: "flex", md: "none"} }}
-          >
-            <Grid item xs={5} sx={{ textAlign: "center", justifyContent: "center", display: "block" }}>
-              <Typography variant="h5" component="div">
-                Your purchase is almost ready!
-              </Typography>
-              <ImageListItem
-                sx={{ maxWidth: 150, maxHeight: 150, mt: 2, mb: 4 }}
-              >
-                <img
-                  src={
-                    "https://clipart.world/wp-content/uploads/2021/01/Happy-Pikachu-clipart-transparent-1.png"
-                  }
-                  srcSet={
-                    "https://clipart.world/wp-content/uploads/2021/01/Happy-Pikachu-clipart-transparent-1.png"
-                  }
-                  alt={"happyPikachu"}
-                  loading="lazy"
-                />
-              </ImageListItem>
-
-              <Typography variant="h6" component="div">
-                You will pay $ {totalPriceCart} for {qtyItemsCart} beautiful
-                items
-              </Typography>
-            </Grid>
-
-            <Grid item xs={5} sx={{ mt: 2, textAlign: "center" }}>
-              <FormControl
-                component="form"
-                sx={{
-                  "& .MuiTextField-root": {
-                    m: 1,
-                    width: "28ch",
-                    justifyContent: "center",
-                    display: "flex",
-                    fontSize: 20,
-                  },
-                }}
-                onSubmit={handleSubmit}
-              >
-                <TextField
-                  required
-                  color="secondary"
-                  focused
-                  label="Name"
-                  onChange={handleChange}
-                  value={formData.name}
-                  name="name"
-                  placeholder="Name and surname please"
-                />
-                <TextField
-                  required
-                  color="secondary"
-                  focused
-                  label="Email"
-                  onChange={handleChange}
-                  value={formData.email}
-                  name="email"
-                  placeholder="Example: hello@gmail.com"
                 />
                 <TextField
                   required
