@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Paired Pikachu Celebrations Plush - 8 In.",
     "description": "Send thoughtful wishes to a loved one or add heartfelt style to your own decor with this adorable plush! Featuring a male and female Pikachu holding a heart made of silky, shining roses wrapped with a pink ribbon, it's full of sweet sentiment for Valentine's Day or any other special occasion for showing you care. Item Dimensions: 8 x 4.5 x 7 IN. Country Of Origin: Made in China. Item Weight: 5.2 OZ. Recommended Age: 4+ Years",
     "price": 19.99,
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Classic Pikachu Poké Plush - 26 ¾ In.",
     "description": "This jumbo-sized Pikachu is big enough to battle, but soft enough to hug! You can show off your Pokémon pride with one of our largest Poké Plush ever. Embroidered details and soft fabric help bring Pikachu to life in a huge way! Measures about 26 ¾ inches tall and 24 ½ inches wide. A big plush for big fun! One of our biggest Pikachu plush ever! Pokémon Center Original. Item Dimensions: 17.7 x 24.4 x 26.8 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 24.99,
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "categoryId": 2,
+    "categoryId": "pika-custom",
     "title": "Snorlax Costume Pikachu Poké Plush - 8 In",
     "description": "As seen in the Pokémon video games, Poké Maniacs are Trainers who love dressing up as intimidating Pokémon and other creatures. Although this Pikachu plush is in costume as Snorlax, it's not sleepy at all! With a tough look, it seems more than ready to jump into battle! Item Dimensions: 4 x 7.9 x 7.5 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 22.99,
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Pikachu Pokémon Squishy Plush - 13 ¾ In.",
     "description": "Just when you thought it wasn't possible, Pikachu has gotten even cuter than ever before! This squishy plush features the famous Electric-type Pokémon from Kanto in the form of a rotund orb with tiny arms and feet—and it's super squishy! At a size like this, Pikachu makes a great cuddle buddy for cozy evenings on the couch. Item Dimensions: 9.8 x 11.8 x 13.8 IN. Country Of Origin: Made in Philippines. Recommended Age: 4+ Years",
     "price": 35.99,
@@ -33,7 +33,7 @@
   },
   {
     "id": 5,
-    "categoryId": 2,
+    "categoryId": "pika-custom",
     "title": "Eevee Cape Pikachu Poké Plush - 9 In.",
     "description": "Two great Pokémon combined in one adorable plush! Pikachu is wearing a cape that looks like Eevee, complete with a puffy tail and supersoft ruff. It stands up cute and tall as it dreams of adventure! Cuteness off the charts. Two fan favorites in one cuddly plush. Hood can be pulled back to show off Pikachu's ears. Pokémon Center Original. Item Dimensions: 6.8 x 7.3 x 9 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 18.99,
@@ -41,7 +41,7 @@
   },
   {
     "id": 6,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Safari Pikachu Poké Plush - 8 In.",
     "description": "Send thoughtful wishes to a loved one or add heartfelt style to your own decor with this adorable plush! Featuring a male and female Pikachu holding a heart made of silky, shining roses wrapped with a pink ribbon, it's full of sweet sentiment for Valentine's Day or any other special occasion for showing you care. Item Dimensions: 8 x 4.5 x 7 IN. Country Of Origin: Made in China. Item Weight: 5.2 OZ. Recommended Age: 4+ Years",
     "price": 19.99,
@@ -49,7 +49,7 @@
   },
   {
     "id": 7,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Pikachu with Gift Box Plush - 11 In.",
     "description": "This jumbo-sized Pikachu is big enough to battle, but soft enough to hug! You can show off your Pokémon pride with one of our largest Poké Plush ever. Embroidered details and soft fabric help bring Pikachu to life in a huge way! Measures about 26 ¾ inches tall and 24 ½ inches wide. A big plush for big fun! One of our biggest Pikachu plush ever! Pokémon Center Original. Item Dimensions: 17.7 x 24.4 x 26.8 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 29.99,
@@ -57,7 +57,7 @@
   },
   {
     "id": 8,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Pikachu & Eevee Sweet Days Plush - 7 ¼ In.",
     "description": "As seen in the Pokémon video games, Poké Maniacs are Trainers who love dressing up as intimidating Pokémon and other creatures. Although this Pikachu plush is in costume as Snorlax, it's not sleepy at all! With a tough look, it seems more than ready to jump into battle! Item Dimensions: 4 x 7.9 x 7.5 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 29.99,
@@ -65,7 +65,7 @@
   },
   {
     "id": 9,
-    "categoryId": 2,
+    "categoryId": "pika-custom",
     "title": "Pikachu Celebrations: Intern Pikachu Poké Plush - 7 ¼ In.",
     "description": "Just when you thought it wasn't possible, Pikachu has gotten even cuter than ever before! This squishy plush features the famous Electric-type Pokémon from Kanto in the form of a rotund orb with tiny arms and feet—and it's super squishy! At a size like this, Pikachu makes a great cuddle buddy for cozy evenings on the couch. Item Dimensions: 9.8 x 11.8 x 13.8 IN. Country Of Origin: Made in Philippines. Recommended Age: 4+ Years",
     "price": 17.99,
@@ -73,7 +73,7 @@
   },
   {
     "id": 10,
-    "categoryId": 2,
+    "categoryId": "pika-custom",
     "title": "Charizard Costume Pikachu Poké Plush - 8 In.",
     "description": "Two great Pokémon combined in one adorable plush! Pikachu is wearing a cape that looks like Eevee, complete with a puffy tail and supersoft ruff. It stands up cute and tall as it dreams of adventure! Cuteness off the charts. Two fan favorites in one cuddly plush. Hood can be pulled back to show off Pikachu's ears. Pokémon Center Original. Item Dimensions: 6.8 x 7.3 x 9 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 24.99,
@@ -81,7 +81,7 @@
   },
   {
     "id": 11,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Pikachu Pokémon Happy Spring Plush - 8 ¾ In.",
     "description": "Send thoughtful wishes to a loved one or add heartfelt style to your own decor with this adorable plush! Featuring a male and female Pikachu holding a heart made of silky, shining roses wrapped with a pink ribbon, it's full of sweet sentiment for Valentine's Day or any other special occasion for showing you care. Item Dimensions: 8 x 4.5 x 7 IN. Country Of Origin: Made in China. Item Weight: 5.2 OZ. Recommended Age: 4+ Years",
     "price": 15.99,
@@ -89,7 +89,7 @@
   },
   {
     "id": 12,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Kanto Trainer Hat Pikachu Poké Plush - 16 In.",
     "description": "This jumbo-sized Pikachu is big enough to battle, but soft enough to hug! You can show off your Pokémon pride with one of our largest Poké Plush ever. Embroidered details and soft fabric help bring Pikachu to life in a huge way! Measures about 26 ¾ inches tall and 24 ½ inches wide. A big plush for big fun! One of our biggest Pikachu plush ever! Pokémon Center Original. Item Dimensions: 17.7 x 24.4 x 26.8 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 44.99,
@@ -97,7 +97,7 @@
   },
   {
     "id": 13,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "25th Celebration - Unova Region Pikachu - 9 In.",
     "description": "As seen in the Pokémon video games, Poké Maniacs are Trainers who love dressing up as intimidating Pokémon and other creatures. Although this Pikachu plush is in costume as Snorlax, it's not sleepy at all! With a tough look, it seems more than ready to jump into battle! Item Dimensions: 4 x 7.9 x 7.5 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 27.99,
@@ -105,7 +105,7 @@
   },
   {
     "id": 14,
-    "categoryId": 2,
+    "categoryId": "pika-custom",
     "title": "Team Skull Guzma Costume Pikachu Poké Plush - 9 In.",
     "description": "Just when you thought it wasn't possible, Pikachu has gotten even cuter than ever before! This squishy plush features the famous Electric-type Pokémon from Kanto in the form of a rotund orb with tiny arms and feet—and it's super squishy! At a size like this, Pikachu makes a great cuddle buddy for cozy evenings on the couch. Item Dimensions: 9.8 x 11.8 x 13.8 IN. Country Of Origin: Made in Philippines. Recommended Age: 4+ Years",
     "price": 18.99,
@@ -113,7 +113,7 @@
   },
   {
     "id": 15,
-    "categoryId": 1,
+    "categoryId": "pika-plush",
     "title": "Children's Day Pikachu Poké Plush - 10 In.",
     "description": "Two great Pokémon combined in one adorable plush! Pikachu is wearing a cape that looks like Eevee, complete with a puffy tail and supersoft ruff. It stands up cute and tall as it dreams of adventure! Cuteness off the charts. Two fan favorites in one cuddly plush. Hood can be pulled back to show off Pikachu's ears. Pokémon Center Original. Item Dimensions: 6.8 x 7.3 x 9 IN. Country Of Origin: Made in China. Recommended Age: 4+ Years",
     "price": 24.99,

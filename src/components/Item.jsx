@@ -22,7 +22,7 @@ export const Item = ({ dataItem }) => {
           <img
             src={dataItem.pictureUrl}
             srcSet={dataItem.pictureUrl}
-            alt={dataItem.title}
+            alt={dataItem.name}
             loading="lazy"
           />
         </ImageListItem>
@@ -33,7 +33,7 @@ export const Item = ({ dataItem }) => {
           align="center"
           sx={{ mb: 1, fontWeight: 500, fontSize: 18 }}
         >
-          {dataItem.title}
+          {dataItem.name}
         </Typography>
 
         <Typography

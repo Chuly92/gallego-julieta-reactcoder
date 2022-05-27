@@ -27,6 +27,7 @@ export const ItemDetail = ({ data }) => {
     
   return (
     <>
+    {data &&
       <Container maxWidth="3840px" component="div">
         {/* Screen size up to 900px */}
 
@@ -43,7 +44,7 @@ export const ItemDetail = ({ data }) => {
             mt: 2,
           }}
         >
-          {data.title}
+          {data.name}
         </Typography>
 
         <Grid
@@ -58,7 +59,7 @@ export const ItemDetail = ({ data }) => {
               <img
                 src={data.pictureUrl}
                 srcSet={data.pictureUrl}
-                alt={data.title}
+                alt={data.name}
                 loading="lazy"
 
               />
@@ -104,7 +105,7 @@ export const ItemDetail = ({ data }) => {
             <img
               src={data.pictureUrl}
               srcSet={data.pictureUrl}
-              alt={data.title}
+              alt={data.name}
               loading="lazy"
             />
           </ImageListItem>
@@ -161,6 +162,7 @@ export const ItemDetail = ({ data }) => {
         </Grid>      
 
       </Container>
+      }
     </>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
-import dataMock from "../data/products.json";
-import { CircularProgress } from "@mui/material";
+import {Loading} from './Loading';
+import {getFirestore, getDoc, doc, collection, query, where} from 'firebase/firestore';
 
 export const ItemDetailContainer = () => {
   const [data, setData] = useState({});
@@ -12,21 +12,23 @@ export const ItemDetailContainer = () => {
   const { id } = useParams();
 
   const getItemDetail = () => {
+    
     setLoading(true);
-    setError("");
+    const db = getFirestore();
+        const docRef = doc(db, "items", id);
 
-    const dataPromise = new Promise((res, rej) => {
-      setTimeout(() => {
-        const itemFilter = dataMock.find((item) => item.id == id);
-        res(itemFilter);
-      }, 2000);
-    });
-
-    dataPromise
-      .then((res) => setData(res))
+    getDoc(docRef)
+    .then((snapshot) => {
+        if(!docRef){
+          alert('There is no detail for this item');
+        }else{
+          console.log(snapshot.data())
+          setData({ id: snapshot.id, ...snapshot.data()})
+        }
+      })
       .catch((err) => setError(err))
-      .finally(() => setLoading(false));
-  };
+      .finally(setLoading(false));
+}
 
   useEffect(() => {
     getItemDetail();
@@ -36,9 +38,7 @@ export const ItemDetailContainer = () => {
     <>
       {loading && (
         <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <CircularProgress size="60px" sx={{ m: 2 }} color="secondary" />
-          </div>
+          <Loading />
         </>
       )}
       {error && "Error loading data"}

@@ -18,8 +18,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { cartContext } from "../contexts/ContextHOC";
 
 export const NavBar = () => {
-  let navigate = useNavigate();
 
+  let navigate = useNavigate();
   const { qtyItemsCart } = useContext(cartContext);
 
   //Define menu values

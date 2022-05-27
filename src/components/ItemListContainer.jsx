@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
-import dataMock from "../data/products.json";
-import { CircularProgress, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Loading } from "./Loading";
+import {getFirestore, getDocs, collection, query, where} from 'firebase/firestore';
 
 export const ItemListContainer = () => {
   const [data, setData] = useState([]);
@@ -13,28 +14,36 @@ export const ItemListContainer = () => {
 
   const fetchData = () => {
     setLoading(true);
-    setError("");
+    const db = getFirestore();
 
-    const dataPromise = new Promise((res, rej) => {
-      setTimeout(() => {
-        if (id) {
-          const categoryFilter = dataMock.filter((cat) => cat.categoryId == id);
-          res(categoryFilter);
-        } else {
-          res(dataMock);
-        }
-      }, 2000);
-    });
-
-    dataPromise
-      .then((res) => setData(res))
-      .catch((err) => setError(err))
-      .finally(() => setLoading(false));
+    if (id) {
+      const q = query(collection(db, "items"), where("categoryCode", "==", id));
+      getDocs(q)
+        .then((snapshot) => {
+          if (snapshot.size === 0) {
+            alert("There are no products in this category");
+          } else {
+            setData(
+              snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+            );
+          }
+        })
+        .catch((err) => setError(err))
+        .finally(setLoading(false));
+    } else {
+      const itemCollection = collection(db, "items");
+      getDocs(itemCollection)
+        .then((snapshot) => {
+          setData(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        })
+        .catch((err) => setError(err))
+        .finally(setLoading(false));
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, [id]);
+  }, []);
 
   return (
     <>
@@ -54,16 +63,12 @@ export const ItemListContainer = () => {
 
       {loading && (
         <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <CircularProgress size="60px" sx={{ m: 2 }} color="secondary" />
-          </div>
+          <Loading />
         </>
       )}
 
       {error && "Error loading data"}
-      {data && 
-      <ItemList data={data}/>}
-  
+      {data && <ItemList data={data} />}
     </>
   );
 };
