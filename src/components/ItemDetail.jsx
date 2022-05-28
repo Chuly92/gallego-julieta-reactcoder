@@ -19,7 +19,6 @@ export const ItemDetail = ({ data }) => {
     const reviewCart = cart.map((obj) => {
       if (obj.data.id === data.id) {
         const updatedStock = data.stock - obj.qtyItem;
-        console.log('updatedStock in IF TRUE: ' + updatedStock);
         setStockWithCart(updatedStock);
         setItemInCart(true);
         
@@ -29,7 +28,6 @@ export const ItemDetail = ({ data }) => {
       }
 
       if(!itemInCart){
-        console.log('entro')
         setStockWithCart(data.stock);
       }
   })}, [data, itemInCart, cart])

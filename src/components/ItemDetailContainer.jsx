@@ -13,6 +13,10 @@ export const ItemDetailContainer = () => {
 
   const { id } = useParams();
 
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
+  };
+  
   useEffect(() => {
     setLoading(true);
     const db = getFirestore();
@@ -34,9 +38,6 @@ export const ItemDetailContainer = () => {
       });
   }, [id]);
 
-  const handleCloseAlert = () => {
-    setOpenAlert(false);
-  };
 
   return (
     <>

@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-  ImageListItem,
-} from "@mui/material";
+import {Box, Button, Container, FormControl, Grid, TextField, Typography, ImageListItem, Dialog, DialogActions, DialogTitle} from '@mui/material';
 import React, { useContext, useState } from "react";
 import { cartContext } from "../contexts/ContextHOC";
 import { collection, getFirestore, addDoc } from "firebase/firestore";
@@ -20,6 +11,15 @@ export const Checkout = () => {
     email: "",
     phone: 0,
   });
+  const [orderId, setOrderId] = useState("");
+  const [openOrderCreated, setOpenOrderCreated] = useState(false);
+
+  const db = getFirestore();
+  const ordersCollection = collection(db, "orders");
+
+  const handleClose = () => {
+    setOpenOrderCreated(false);
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -31,11 +31,26 @@ export const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({ formData, cart, totalPriceCart });
+    const order = { 
+      buyer: formData, 
+      items: cart.map( (item) => ({id: item.data.id, name: item.data.name, price: item.data.price}) ),
+      date: new Date().toLocaleString(),
+      total: totalPriceCart 
+    };
+
+    addDoc(ordersCollection, order)
+    .then(( {orderId}) => {
+      setOrderId(orderId);
+      setOpenOrderCreated(true);
+    })
+    .catch( (err) => console.log(err));
   };
 
   return (
     <>
+
+    {JSON.stringify(orderId)}
+
       <Container sx={{ justifyContent: "center" }}>
         <Typography
           variant="title"
@@ -153,6 +168,28 @@ export const Checkout = () => {
                   Proceed to payment
                 </Button>
               </FormControl>
+
+              <Dialog
+        open={openOrderCreated}
+        onClose={handleClose}
+        sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Your order was created successfully"}
+          <br />
+        </DialogTitle>
+        <DialogActions>
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{ display: "flex", margin: "0 auto" }}
+            onClick={handleClose}
+          >
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+
             </Grid>
           </Grid>
         </Box>

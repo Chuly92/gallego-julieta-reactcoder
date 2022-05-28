@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import {Alert, Snackbar, Button, Dialog, DialogActions, DialogTitle} from '@mui/material';
 
 export const cartContext = createContext(undefined);
 
@@ -6,7 +7,15 @@ export const ContextHOC = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
   const [totalPriceCart, setTotalPriceCart] = useState(0);
-  const [isRemoveItem, setIsRemoveItem] = useState(false);
+  const [isRemoveItem, setOpenMsjSuccess] = useState(false);
+
+  const [openMsjSuccess, setOpenAddSuccessful] = useState(false);
+  const [openErrDelete, setOpenErrDelete] = useState(false);
+
+  const handleClose = () => {
+    setOpenAddSuccessful(false);
+    setOpenErrDelete(false);
+  };
 
   const addItem = (item) => {
     if (isInCart(item)) {
@@ -14,11 +23,9 @@ export const ContextHOC = ({ children }) => {
         if (obj.data.id === item.data.id) {
           const itemFounded = { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
 
-          if(itemFounded.qtyItem > item.data.stock){
+          if (itemFounded.qtyItem > item.data.stock) {
             alert("Maximum stock reached");
-          }
-          else{
-            alert("added");
+          } else {
             return { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
           }
         }
@@ -26,23 +33,23 @@ export const ContextHOC = ({ children }) => {
       });
 
       setCart(newCart);
-
+      setOpenAddSuccessful(true);
     } else {
       setCart([...cart, item]);
-      // setShowItemCount(false);
+      setOpenAddSuccessful(true);
     }
   };
 
   const removeItem = (item) => {
     if (isInCart(item)) {
-      setIsRemoveItem(true);
-      const filteredCart = cart.filter((e) => e.data.id !== item.data.id);
 
-      saveStoragedCart(cart);
+      const filteredCart = cart.filter((e) => e.data.id !== item.data.id);
       setCart(filteredCart);
-      return filteredCart;
+      saveStoragedCart(cart);
+      setOpenMsjSuccess(true);
+
     } else {
-      alert("Some error has occured by deleting the item. Please try again");
+      setOpenErrDelete(true);
     }
   };
 
@@ -68,7 +75,6 @@ export const ContextHOC = ({ children }) => {
       setQtyItemsCart(totalItems);
       setTotalPriceCart(totalPriceItems);
       saveStoragedCart(cart);
-
     } else {
       //Check localStorage / If I'm deleting all the cart
       if (!isRemoveItem) {
@@ -77,7 +83,6 @@ export const ContextHOC = ({ children }) => {
       } else {
         localStorage.clear();
         setQtyItemsCart(0);
-        
       }
     }
   }, [cart, isRemoveItem]);
@@ -105,6 +110,46 @@ export const ContextHOC = ({ children }) => {
       >
         {children}
       </cartContext.Provider>
+
+      {/* Manage alerts and errors*/}
+
+      <Snackbar
+        open={openMsjSuccess}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
+        <Alert
+          severity="success"
+          sx={{ width: "100%", fontSize: 20 }}
+          variant="filled"
+        >
+          Item added to cart!
+        </Alert>
+      </Snackbar>      
+
+      <Dialog
+        open={openErrDelete}
+        onClose={handleClose}
+        sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"There was some error deleting the item"}
+          <br />
+          {"Please try again"}
+        </DialogTitle>
+        <DialogActions>
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{ display: "flex", margin: "0 auto" }}
+            onClick={handleClose}
+          >
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+
     </>
   );
 };
