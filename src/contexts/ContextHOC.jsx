@@ -12,14 +12,24 @@ export const ContextHOC = ({ children }) => {
     if (isInCart(item)) {
       const newCart = cart.map((obj) => {
         if (obj.data.id === item.data.id) {
-          return { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
+          const itemFounded = { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
+
+          if(itemFounded.qtyItem > item.data.stock){
+            alert("Maximum stock reached");
+          }
+          else{
+            alert("added");
+            return { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
+          }
         }
         return obj;
       });
 
       setCart(newCart);
+
     } else {
       setCart([...cart, item]);
+      // setShowItemCount(false);
     }
   };
 
@@ -28,7 +38,7 @@ export const ContextHOC = ({ children }) => {
       setIsRemoveItem(true);
       const filteredCart = cart.filter((e) => e.data.id !== item.data.id);
 
-      saveSessionCart(cart);
+      saveStoragedCart(cart);
       setCart(filteredCart);
       return filteredCart;
     } else {
@@ -57,26 +67,28 @@ export const ContextHOC = ({ children }) => {
 
       setQtyItemsCart(totalItems);
       setTotalPriceCart(totalPriceItems);
-      saveSessionCart(cart);
+      saveStoragedCart(cart);
+
     } else {
-      //Check sessionStorage / If I'm deleting all the cart
+      //Check localStorage / If I'm deleting all the cart
       if (!isRemoveItem) {
-        const sessionCart = loadSessionCart();
+        const sessionCart = loadStoragedCart();
         !sessionCart || setCart(sessionCart);
       } else {
-        sessionStorage.clear();
+        localStorage.clear();
         setQtyItemsCart(0);
+        
       }
     }
   }, [cart, isRemoveItem]);
 
-  const loadSessionCart = () => {
-    let savedCart = JSON.parse(sessionStorage.getItem("savedCart"));
+  const loadStoragedCart = () => {
+    let savedCart = JSON.parse(localStorage.getItem("savedCart"));
     return savedCart;
   };
 
-  const saveSessionCart = (cart) => {
-    sessionStorage.setItem("savedCart", JSON.stringify(cart));
+  const saveStoragedCart = (cart) => {
+    localStorage.setItem("savedCart", JSON.stringify(cart));
   };
 
   return (

@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import { Box, Button, ButtonGroup, IconButton } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  Snackbar,
+} from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
+  
   const [counter, setCounter] = useState(initial);
+
+  const [openMaxError, setOpenMaxError] = useState(false);
+  const [openItemError, setOpenItemError] = useState(false);
 
   const handleAddItem = (e) => {
     e.preventDefault();
@@ -12,7 +23,7 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
     if (counter < stock) {
       setCounter(counter + 1);
     } else {
-      alert("Maximum units allowed");
+      setOpenMaxError(true);
     }
   };
 
@@ -26,11 +37,15 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
 
     if (counter > 0) {
       onAdd(counter);
-    } else{
-      alert("Please add an item");
+    } else {
+      setOpenItemError(true);
     }
   };
 
+  const handleClose = () => {
+    setOpenMaxError(false);
+    setOpenItemError(false);
+  };
 
   return (
     <>
@@ -60,6 +75,16 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
             sx={{ mx: 1 }}
           >
             <AddCircleIcon />
+
+            <Snackbar open={openMaxError} autoHideDuration={5000} onClose={handleClose}>
+              <Alert
+                severity="warning"
+                sx={{ width: "100%", fontSize: 20 }}
+                variant="filled"
+              >
+                Maximum units allowed!
+              </Alert>
+            </Snackbar>
           </IconButton>
         </ButtonGroup>
 
@@ -72,6 +97,15 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
         >
           Add to Cart
         </Button>
+        <Snackbar open={openItemError} autoHideDuration={5000} onClose={handleClose}>
+          <Alert
+            severity="warning"
+            sx={{ width: "100%", fontSize: 20 }}
+            variant="filled"
+          >
+            Please add an item to add to the cart
+          </Alert>
+        </Snackbar>
       </Box>
     </>
   );
