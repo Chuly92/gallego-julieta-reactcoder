@@ -1,21 +1,21 @@
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+    AppBar,
+    Avatar,
+    Box,
+    Button,
+    Container,
+    IconButton,
+    Menu,
+    MenuItem,
+    Toolbar,
+    Typography
+} from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/pikachu.png";
-import { CartWidget } from "./CartWidget";
-import {
-  AppBar,
-  Avatar,
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import { cartContext } from "../contexts/ContextHOC";
+import { CartWidget } from "./CartWidget";
 
 export const NavBar = () => {
 

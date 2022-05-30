@@ -1,7 +1,7 @@
-import {Box, Button, Container, FormControl, Grid, TextField, Typography, ImageListItem, Dialog, DialogActions, DialogTitle} from '@mui/material';
+import { Box, Button, Container, Dialog, DialogActions, DialogTitle, FormControl, Grid, ImageListItem, TextField, Typography } from '@mui/material';
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { cartContext } from "../contexts/ContextHOC";
-import { collection, getFirestore, addDoc } from "firebase/firestore";
 
 export const Checkout = () => {
   const { cart, qtyItemsCart, totalPriceCart } = useContext(cartContext);

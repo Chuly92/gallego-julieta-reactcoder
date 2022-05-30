@@ -1,11 +1,9 @@
-import { useContext } from "react";
 import {
-  Button,
-  ImageListItem,
-  Typography,
-  Container,
-  Grid,
+    Button, Container,
+    Grid, ImageListItem,
+    Typography
 } from "@mui/material";
+import { useContext } from "react";
 import { cartContext } from "../contexts/ContextHOC";
 
 export const CartItem = ({ dataItem }) => {

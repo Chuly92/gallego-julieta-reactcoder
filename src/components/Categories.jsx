@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import {
-  Container,
-  Grid,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-  Typography,
+    Container,
+    Grid,
+    ImageList,
+    ImageListItem,
+    ImageListItemBar,
+    Typography
 } from "@mui/material";
-import { Loading } from "./Loading";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Loading } from "./Loading";
 
 export const Categories = () => {
   const [loading, setLoading] = useState(false);

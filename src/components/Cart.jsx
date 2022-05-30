@@ -1,8 +1,8 @@
+import { Box, Button, Grid, ImageListItem, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import { cartContext } from "../contexts/ContextHOC";
-import { Box, Grid, Typography, Button, ImageListItem } from "@mui/material";
-import { CartItem } from "./CartItem";
 import { Link } from "react-router-dom";
+import { cartContext } from "../contexts/ContextHOC";
+import { CartItem } from "./CartItem";
 
 export const Cart = () => {
   const { cart, totalPriceCart } = useContext(cartContext);

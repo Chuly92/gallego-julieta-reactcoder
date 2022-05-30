@@ -1,8 +1,8 @@
-import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import { Box } from "@mui/system";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export const CartWidget = ({ qtyItems }) => {
