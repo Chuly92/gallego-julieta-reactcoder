@@ -73,7 +73,7 @@ export const ContextHOC = ({ children }) => {
       });
 
       setQtyItemsCart(totalItems);
-      setTotalPriceCart(totalPriceItems);
+      setTotalPriceCart(totalPriceItems.toFixed());
       saveStoragedCart(cart);
     } else {
       //Check localStorage / If I'm deleting all the cart

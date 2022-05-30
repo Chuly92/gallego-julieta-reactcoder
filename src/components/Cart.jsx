@@ -78,7 +78,7 @@ export const Cart = () => {
                   justifyContent: "center",
                 }}
               >
-                US$ {totalPriceCart.toFixed(2)}
+                US$ {totalPriceCart}
               </Typography>
 
               <Link to={`/checkout`} style={{ textDecoration: "none" }}>
@@ -167,7 +167,7 @@ export const Cart = () => {
                     justifyContent: "center",
                   }}
                 >
-                  US$ {totalPriceCart.toFixed(2)}
+                  US$ {totalPriceCart}
                 </Typography>
 
                 <Link to={`/checkout`} style={{ textDecoration: "none" }}>

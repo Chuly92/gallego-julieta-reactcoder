@@ -7,7 +7,7 @@ export const ItemDetail = ({ data }) => {
   const { cart, addItem } = useContext(cartContext);
   
   const [showItemCount, setShowItemCount] = useState(true);
-  const [stockWithCart, setStockWithCart] = useState(0);
+  const [stockWithCart, setStockWithCart] = useState(data.stock);
   const [itemInCart, setItemInCart] = useState(false);
 
   const onAdd = (qtyItem) => {
