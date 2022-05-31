@@ -23,7 +23,7 @@ export const Checkout = () => {
     email: "",
     phone: 0,
   });
-  const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState();
   const [openOrderCreated, setOpenOrderCreated] = useState(false);
 
   const db = getFirestore();
@@ -66,7 +66,7 @@ export const Checkout = () => {
     <>
       {JSON.stringify(orderId)}
 
-      <Container sx={{ justifyContent: "center" }}>
+      <Container sx={{ justifyContent: "center", p: 2 }}>
         <Typography
           variant="title"
           align="center"
@@ -75,7 +75,7 @@ export const Checkout = () => {
             fontSize: 38,
             fontFamily: "fantasy",
             letterSpacing: ".2rem",
-            mt: 2,
+            mt: 1,
             mb: 1,
           }}
         >
@@ -88,6 +88,7 @@ export const Checkout = () => {
             boxShadow: 5,
             p: 1,
             bgcolor: "#f2f0f2",
+            justifyContent: "center"
           }}
         >
           <Grid
@@ -126,7 +127,7 @@ export const Checkout = () => {
                 sx={{
                   "& .MuiTextField-root": {
                     m: 1,
-                    width: "35ch",
+                    width: "30ch",
                     justifyContent: "center",
                     display: "flex",
                     fontSize: 20,
