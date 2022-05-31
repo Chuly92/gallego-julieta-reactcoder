@@ -1,5 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
-import {Alert, Snackbar, Button, Dialog, DialogActions, DialogTitle} from '@mui/material';
+import {
+  Alert,
+  Snackbar,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+} from "@mui/material";
 
 export const cartContext = createContext(undefined);
 
@@ -7,14 +14,18 @@ export const ContextHOC = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
   const [totalPriceCart, setTotalPriceCart] = useState(0);
-  const [isRemoveItem, setOpenMsjSuccess] = useState(false);
+  const [isRemoveItem, setIsRemoveItem] = useState(false);
 
-  const [openMsjSuccess, setOpenAddSuccessful] = useState(false);
+  const [openMsjSuccess, setOpenMsjSuccess] = useState(false);
+  const [openMsjModified, setOpenMsjModified] = useState(false);
+  const [openMaxStock, setOpenMaxStock] = useState(false);
   const [openErrDelete, setOpenErrDelete] = useState(false);
 
   const handleClose = () => {
-    setOpenAddSuccessful(false);
+    setOpenMsjSuccess(false);
+    setOpenMsjModified(false);
     setOpenErrDelete(false);
+    setOpenMaxStock(false);
   };
 
   const addItem = (item) => {
@@ -24,30 +35,30 @@ export const ContextHOC = ({ children }) => {
           const itemFounded = { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
 
           if (itemFounded.qtyItem > item.data.stock) {
-            alert("Maximum stock reached");
+            setOpenMaxStock(true);
+            return false;
           } else {
-            return { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
+            return itemFounded;
+            // return { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
           }
         }
         return obj;
       });
 
       setCart(newCart);
-      setOpenAddSuccessful(true);
+      setOpenMsjSuccess(true);
     } else {
       setCart([...cart, item]);
-      setOpenAddSuccessful(true);
+      setOpenMsjSuccess(true);
     }
   };
 
   const removeItem = (item) => {
     if (isInCart(item)) {
-
       const filteredCart = cart.filter((e) => e.data.id !== item.data.id);
       setCart(filteredCart);
       saveStoragedCart(cart);
-      setOpenMsjSuccess(true);
-
+      setIsRemoveItem(true);
     } else {
       setOpenErrDelete(true);
     }
@@ -60,6 +71,31 @@ export const ContextHOC = ({ children }) => {
 
   const clear = () => {
     setCart([]);
+  };
+
+  const updateItem = (item, newQty) => {
+    if (isInCart(item)) {
+      console.log(item, newQty);
+
+      if (newQty > item.data.stock) {
+        console.log("entro a validar stock");
+        setOpenMaxStock(true);
+        return false;
+
+      } else {
+        const findItem = cart.map((obj) => {
+          if (obj.data.id === item.data.id) {
+            const itemFounded = { ...obj, qtyItem: newQty };
+            return itemFounded;
+          }
+          return obj;
+        });
+
+        setCart(findItem);
+        setOpenMsjModified(true);
+        return true;
+      }
+    }
   };
 
   useEffect(() => {
@@ -103,6 +139,7 @@ export const ContextHOC = ({ children }) => {
           cart,
           addItem,
           removeItem,
+          updateItem,
           clear,
           qtyItemsCart,
           totalPriceCart,
@@ -115,7 +152,7 @@ export const ContextHOC = ({ children }) => {
 
       <Snackbar
         open={openMsjSuccess}
-        autoHideDuration={5000}
+        autoHideDuration={2000}
         onClose={handleClose}
       >
         <Alert
@@ -125,7 +162,35 @@ export const ContextHOC = ({ children }) => {
         >
           Item added to cart!
         </Alert>
-      </Snackbar>      
+      </Snackbar>
+
+      <Snackbar
+        open={openMsjModified}
+        autoHideDuration={500}
+        onClose={handleClose}
+      >
+        <Alert
+          severity="success"
+          sx={{ width: "100%", fontSize: 20 }}
+          variant="filled"
+        >
+          Quantity modified!
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={openMaxStock}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
+        <Alert
+          severity="warning"
+          sx={{ width: "100%", fontSize: 20 }}
+          variant="filled"
+        >
+          Maximum stock reached
+        </Alert>
+      </Snackbar>
 
       <Dialog
         open={openErrDelete}
@@ -148,8 +213,6 @@ export const ContextHOC = ({ children }) => {
           </Button>
         </DialogActions>
       </Dialog>
-
-
     </>
   );
 };

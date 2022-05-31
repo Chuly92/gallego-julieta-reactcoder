@@ -6,12 +6,11 @@ import {
   Button,
   ButtonGroup,
   IconButton,
-  Snackbar
+  Snackbar,
 } from "@mui/material";
 import React, { useState } from "react";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
-  
   const [counter, setCounter] = useState(initial);
 
   const [openMaxError, setOpenMaxError] = useState(false);
@@ -46,7 +45,6 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
     setOpenMaxError(false);
     setOpenItemError(false);
   };
-  
 
   return (
     <>
@@ -76,17 +74,20 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
             sx={{ mx: 1 }}
           >
             <AddCircleIcon />
-
-            <Snackbar open={openMaxError} autoHideDuration={5000} onClose={handleClose}>
-              <Alert
-                severity="warning"
-                sx={{ width: "100%", fontSize: 20 }}
-                variant="filled"
-              >
-                Maximum units allowed!
-              </Alert>
-            </Snackbar>
           </IconButton>
+          <Snackbar
+            open={openMaxError}
+            autoHideDuration={5000}
+            onClose={handleClose}
+          >
+            <Alert
+              severity="warning"
+              sx={{ width: "100%", fontSize: 20 }}
+              variant="filled"
+            >
+              Maximum units allowed!
+            </Alert>
+          </Snackbar>
         </ButtonGroup>
 
         <Button
@@ -98,7 +99,11 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
         >
           Add to Cart
         </Button>
-        <Snackbar open={openItemError} autoHideDuration={5000} onClose={handleClose}>
+        <Snackbar
+          open={openItemError}
+          autoHideDuration={5000}
+          onClose={handleClose}
+        >
           <Alert
             severity="warning"
             sx={{ width: "100%", fontSize: 20 }}
