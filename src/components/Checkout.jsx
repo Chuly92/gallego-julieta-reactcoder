@@ -1,4 +1,16 @@
-import { Box, Button, Container, Dialog, DialogActions, DialogTitle, FormControl, Grid, ImageListItem, TextField, Typography } from '@mui/material';
+import { AccountCircle, AlternateEmail, Phone } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  FormControl,
+  Grid,
+  ImageListItem, InputAdornment, TextField,
+  Typography
+} from "@mui/material";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { cartContext } from "../contexts/ContextHOC";
@@ -31,25 +43,28 @@ export const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const order = { 
-      buyer: formData, 
-      items: cart.map( (item) => ({id: item.data.id, name: item.data.name, price: item.data.price}) ),
+    const order = {
+      buyer: formData,
+      items: cart.map((item) => ({
+        id: item.data.id,
+        name: item.data.name,
+        price: item.data.price,
+      })),
       date: new Date().toLocaleString(),
-      total: totalPriceCart 
+      total: totalPriceCart,
     };
 
     addDoc(ordersCollection, order)
-    .then(( {orderId}) => {
-      setOrderId(orderId);
-      setOpenOrderCreated(true);
-    })
-    .catch( (err) => console.log(err));
+      .then(({ orderId }) => {
+        setOrderId(orderId);
+        setOpenOrderCreated(true);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <>
-
-    {JSON.stringify(orderId)}
+      {JSON.stringify(orderId)}
 
       <Container sx={{ justifyContent: "center" }}>
         <Typography
@@ -101,8 +116,7 @@ export const Checkout = () => {
               </ImageListItem>
 
               <Typography variant="h6" component="div">
-                You will pay $ {totalPriceCart} for {qtyItemsCart} beautiful
-                items
+                You will pay $ {totalPriceCart} for {qtyItemsCart} items
               </Typography>
             </Grid>
 
@@ -118,37 +132,64 @@ export const Checkout = () => {
                     fontSize: 20,
                   },
                 }}
+                focused
                 onSubmit={handleSubmit}
               >
                 <TextField
                   required
                   color="secondary"
-                  focused
                   label="Name"
                   onChange={handleChange}
                   value={formData.name}
                   name="name"
+                  type="text"
                   placeholder="Fill with your name and surname please"
+                  inputProps={{ minLength: 4 }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircle />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   required
                   color="secondary"
-                  focused
                   label="Email"
                   onChange={handleChange}
                   value={formData.email}
                   name="email"
-                  placeholder="Insert a valid email. Example: hello@gmail.com"
+                  type="email"
+                  placeholder="Example: yourmail@gmail.com"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AlternateEmail />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   required
                   color="secondary"
-                  focused
                   label="Phone"
                   onChange={handleChange}
                   value={formData.phone}
                   name="phone"
-                  inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+                  type="tel"
+                  inputProps={{
+                    minLength: 10,
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Phone />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <Button
@@ -170,26 +211,25 @@ export const Checkout = () => {
               </FormControl>
 
               <Dialog
-        open={openOrderCreated}
-        onClose={handleClose}
-        sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Your order was created successfully"}
-          <br />
-        </DialogTitle>
-        <DialogActions>
-          <Button
-            color="secondary"
-            variant="contained"
-            sx={{ display: "flex", margin: "0 auto" }}
-            onClick={handleClose}
-          >
-            OK
-          </Button>
-        </DialogActions>
-      </Dialog>
-
+                open={openOrderCreated}
+                onClose={handleClose}
+                sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Your order was created successfully"}
+                  <br />
+                </DialogTitle>
+                <DialogActions>
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    sx={{ display: "flex", margin: "0 auto" }}
+                    onClick={handleClose}
+                  >
+                    OK
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </Grid>
           </Grid>
         </Box>
