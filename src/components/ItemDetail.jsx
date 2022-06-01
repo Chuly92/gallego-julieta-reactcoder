@@ -1,6 +1,6 @@
 import { Container, Grid, ImageListItem, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { cartContext } from "../contexts/ContextHOC";
+import { cartContext } from "../contexts/ContextCart";
 import { ItemCount } from "./ItemCount";
 
 export const ItemDetail = ({ data }) => {

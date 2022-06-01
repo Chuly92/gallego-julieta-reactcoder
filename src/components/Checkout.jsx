@@ -11,9 +11,9 @@ import {
   ImageListItem, InputAdornment, TextField,
   Typography
 } from "@mui/material";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore, serverTimestamp, Timestamp } from "firebase/firestore";
 import React, { useContext, useState } from "react";
-import { cartContext } from "../contexts/ContextHOC";
+import { cartContext } from "../contexts/ContextCart";
 
 export const Checkout = () => {
   const { cart, qtyItemsCart, totalPriceCart } = useContext(cartContext);
@@ -49,7 +49,7 @@ export const Checkout = () => {
         name: item.data.name,
         price: item.data.price,
       })),
-      date: new Date().toLocaleString(),
+      date: serverTimestamp(),
       total: totalPriceCart,
     };
 
@@ -60,7 +60,6 @@ export const Checkout = () => {
         //navigate to a new component with the order finished
       })
       .catch((err) => setError(err));
-
   };
 
   return (

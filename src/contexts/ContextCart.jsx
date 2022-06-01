@@ -10,7 +10,7 @@ import {
 
 export const cartContext = createContext(undefined);
 
-export const ContextHOC = ({ children }) => {
+export const ContextCart = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
   const [totalPriceCart, setTotalPriceCart] = useState(0);

@@ -1,6 +1,6 @@
 import {Container, Grid, ImageListItem, Typography, Box, ButtonGroup, IconButton, Button, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText} from '@mui/material';
 import { useContext, useEffect, useState } from "react";
-import { cartContext } from "../contexts/ContextHOC";
+import { cartContext } from "../contexts/ContextCart";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import DeleteIcon from "@mui/icons-material/Delete";

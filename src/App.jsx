@@ -6,13 +6,13 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { ItemListContainer } from "./components/ItemListContainer";
 import { Cart } from "./components/Cart";
 import {Checkout} from "./components/Checkout";
-import { ContextHOC } from "./contexts/ContextHOC";
+import { ContextCart } from "./contexts/ContextCart";
 import { NotFound } from "./components/NotFound";
 
 function App() {
   return (
     <>
-    <ContextHOC>
+    <ContextCart>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -28,7 +28,7 @@ function App() {
           <Route path="/*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
-      </ContextHOC>
+      </ContextCart>
     </>
   );
 }
