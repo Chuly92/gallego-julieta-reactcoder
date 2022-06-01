@@ -13,8 +13,6 @@ export const Item = ({ dataItem }) => {
           height: 380,
           borderRadius: 5,
           boxShadow: 5,
-
-
           display: { xs: "none", md: "block" },   
           m: 0.5   
         }}        

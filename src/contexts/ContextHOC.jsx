@@ -179,7 +179,7 @@ export const ContextHOC = ({ children }) => {
 
       <Snackbar
         open={openMaxStock}
-        autoHideDuration={2000}
+        autoHideDuration={1000}
         onClose={handleClose}
       >
         <Alert

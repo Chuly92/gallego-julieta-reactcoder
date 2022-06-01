@@ -11,8 +11,8 @@ import {
 import React, { useState } from "react";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
-  const [counter, setCounter] = useState(initial);
 
+  const [counter, setCounter] = useState(initial);
   const [openMaxError, setOpenMaxError] = useState(false);
   const [openItemError, setOpenItemError] = useState(false);
 

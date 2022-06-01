@@ -24,18 +24,20 @@ export const ItemDetailContainer = () => {
 
     getDoc(docRef)
       .then((snapshot) => {
-        if (!docRef) {
+        if (!snapshot.data()) {
           setOpenAlert(true);
+          setData("");
         } else {
           setData({ id: snapshot.id, ...snapshot.data() });
-          setLoading(false);
         }
+        setLoading(false);
       })
       .catch((err) => {
         setError(err);
         setOpenAlert(true);
         setLoading(false);
       });
+
   }, [id]);
 
 
@@ -55,7 +57,7 @@ export const ItemDetailContainer = () => {
         sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
       >
         <DialogTitle id="alert-dialog-title">
-          {"There was some error loading the database"}
+          {"There is no detail for this item"}
           <br />
           {"Please try again"}
         </DialogTitle>

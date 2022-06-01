@@ -12,7 +12,7 @@ import {
   Typography
 } from "@mui/material";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { cartContext } from "../contexts/ContextHOC";
 
 export const Checkout = () => {
@@ -24,6 +24,7 @@ export const Checkout = () => {
     phone: 0,
   });
   const [orderId, setOrderId] = useState();
+  const [error, setError] = useState("");
   const [openOrderCreated, setOpenOrderCreated] = useState(false);
 
   const db = getFirestore();
@@ -56,9 +57,9 @@ export const Checkout = () => {
       .then((order) => {
         setOrderId(order.id);
         setOpenOrderCreated(true);
-        //navigate
+        //navigate to a new component with the order finished
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err));
 
   };
 
