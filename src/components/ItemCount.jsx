@@ -77,7 +77,7 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
           </IconButton>
           <Snackbar
             open={openMaxError}
-            autoHideDuration={5000}
+            autoHideDuration={2000}
             onClose={handleClose}
           >
             <Alert
@@ -101,7 +101,7 @@ export const ItemCount = ({ stock, initial, onAdd }) => {
         </Button>
         <Snackbar
           open={openItemError}
-          autoHideDuration={5000}
+          autoHideDuration={2000}
           onClose={handleClose}
         >
           <Alert

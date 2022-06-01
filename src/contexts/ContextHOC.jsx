@@ -14,8 +14,8 @@ export const ContextHOC = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [qtyItemsCart, setQtyItemsCart] = useState(0);
   const [totalPriceCart, setTotalPriceCart] = useState(0);
-  const [isRemoveItem, setIsRemoveItem] = useState(false);
 
+  const [isRemoveItem, setIsRemoveItem] = useState(false);
   const [openMsjSuccess, setOpenMsjSuccess] = useState(false);
   const [openMsjModified, setOpenMsjModified] = useState(false);
   const [openMaxStock, setOpenMaxStock] = useState(false);
@@ -55,10 +55,12 @@ export const ContextHOC = ({ children }) => {
 
   const removeItem = (item) => {
     if (isInCart(item)) {
+
       const filteredCart = cart.filter((e) => e.data.id !== item.data.id);
       setCart(filteredCart);
       saveStoragedCart(cart);
       setIsRemoveItem(true);
+
     } else {
       setOpenErrDelete(true);
     }
@@ -75,13 +77,10 @@ export const ContextHOC = ({ children }) => {
 
   const updateItem = (item, newQty) => {
     if (isInCart(item)) {
-      console.log(item, newQty);
 
       if (newQty > item.data.stock) {
-        console.log("entro a validar stock");
         setOpenMaxStock(true);
         return false;
-
       } else {
         const findItem = cart.map((obj) => {
           if (obj.data.id === item.data.id) {
@@ -180,7 +179,7 @@ export const ContextHOC = ({ children }) => {
 
       <Snackbar
         open={openMaxStock}
-        autoHideDuration={5000}
+        autoHideDuration={2000}
         onClose={handleClose}
       >
         <Alert
@@ -213,6 +212,7 @@ export const ContextHOC = ({ children }) => {
           </Button>
         </DialogActions>
       </Dialog>
+
     </>
   );
 };

@@ -12,7 +12,7 @@ import {
   Typography
 } from "@mui/material";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { cartContext } from "../contexts/ContextHOC";
 
 export const Checkout = () => {
@@ -35,8 +35,6 @@ export const Checkout = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-
-    console.log(e.target.name, e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -55,16 +53,17 @@ export const Checkout = () => {
     };
 
     addDoc(ordersCollection, order)
-      .then(({ orderId }) => {
-        setOrderId(orderId);
+      .then((order) => {
+        setOrderId(order.id);
         setOpenOrderCreated(true);
+        //navigate
       })
       .catch((err) => console.log(err));
+
   };
 
   return (
     <>
-      {JSON.stringify(orderId)}
 
       <Container sx={{ justifyContent: "center", p: 2 }}>
         <Typography
@@ -75,8 +74,7 @@ export const Checkout = () => {
             fontSize: 38,
             fontFamily: "fantasy",
             letterSpacing: ".2rem",
-            mt: 1,
-            mb: 1,
+            mb: 2,
           }}
         >
           Checkout
@@ -217,8 +215,9 @@ export const Checkout = () => {
                 sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
               >
                 <DialogTitle id="alert-dialog-title">
-                  {"Your order was created successfully"}
+                  {"Your order was created successfully!"}
                   <br />
+                  {"ID: " + orderId}
                 </DialogTitle>
                 <DialogActions>
                   <Button

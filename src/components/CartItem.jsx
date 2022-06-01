@@ -1,13 +1,4 @@
-import {
-  Button,
-  Container,
-  Grid,
-  ImageListItem,
-  Typography,
-  Box,
-  ButtonGroup,
-  IconButton,
-} from "@mui/material";
+import {Container, Grid, ImageListItem, Typography, Box, ButtonGroup, IconButton, Button, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText} from '@mui/material';
 import { useContext, useEffect, useState } from "react";
 import { cartContext } from "../contexts/ContextHOC";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -18,14 +9,18 @@ export const CartItem = ({ dataItem }) => {
   const { removeItem, updateItem } = useContext(cartContext);
   const [counter, setCounter] = useState(dataItem.qtyItem);
 
+  const [openRemoveAlert, setOpenRemoveAlert] = useState(false);
+
+  const handleClose = () => {
+    setOpenRemoveAlert(false);
+  };
+
   const handleQtyCounter = (e, newQty) => {
     e.preventDefault();
-    console.log(newQty);
+
     if (newQty) {
-      console.log("dataItem: " + dataItem);
 
       if (updateItem(dataItem, newQty)) {
-        console.log("entro al IF update");
         setCounter(newQty);
       } else {
         newQty = dataItem.qtyItem;
@@ -34,7 +29,7 @@ export const CartItem = ({ dataItem }) => {
   };
 
   useEffect(() => {
-    console.log("useeffect");
+
   }, [counter]);
 
   return (
@@ -128,7 +123,7 @@ export const CartItem = ({ dataItem }) => {
                 variant="contained"
                 onClick={(e) => {
                   e.preventDefault();
-                  removeItem(dataItem);
+                  setOpenRemoveAlert(true);
                 }}
               >
                 <DeleteIcon fontSize="small"/>
@@ -259,7 +254,7 @@ export const CartItem = ({ dataItem }) => {
                 variant="contained"
                 onClick={(e) => {
                   e.preventDefault();
-                  removeItem(dataItem);
+                  setOpenRemoveAlert(true);
                 }}
               >
                 <DeleteIcon fontSize="small"/>
@@ -286,6 +281,31 @@ export const CartItem = ({ dataItem }) => {
             </Typography>
           </Grid>
         </Grid>
+
+      <Dialog
+        open={openRemoveAlert}
+        onClose={handleClose}
+        aria-labelledby="alertDelete"
+      >
+        <DialogTitle id="alertDelete">{"This action can't be reversed"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure to delete this item?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              handleClose();
+              removeItem(dataItem);
+            }}
+          >
+            Ok
+          </Button>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
+
       </Container>
     </>
   );
