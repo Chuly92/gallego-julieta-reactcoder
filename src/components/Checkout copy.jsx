@@ -19,7 +19,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../contexts/ContextCart";
 import { Loading } from "./Loading";
-import {orderCollection} from '../services/Firebase';
+import {orderCollection, ordersCollection} from '../services/Firebase';
 
 export const Checkout = () => {
   const { cart, qtyItemsCart, totalPriceCart, clear } = useContext(cartContext);
