@@ -102,7 +102,7 @@ export const ItemDetail = ({ data }) => {
                 sx={{
                   fontSize: 18,
                   fontFamily: "monospace",
-                  color: "#525252",
+                  color: "primary.main",
                   display: { xs: "none", md: "flex" },
                   mt: 2,
                   justifyContent: "center",
@@ -186,7 +186,7 @@ export const ItemDetail = ({ data }) => {
                 sx={{
                   fontSize: 18,
                   fontFamily: "monospace",
-                  color: "#525252",
+                  color: "primary.main",
                   display: { xs: "flex", md: "none" },
                   mt: 2,
                   justifyContent: "center",

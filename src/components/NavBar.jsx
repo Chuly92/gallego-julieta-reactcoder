@@ -180,7 +180,7 @@ export const NavBar = () => {
                 }}
                 key={page.id}
                 sx={{
-                  color: "white",
+                  color: "primary.light",
                   display: "block",
                   textTransform: "capitalize",
                   fontSize: 20,

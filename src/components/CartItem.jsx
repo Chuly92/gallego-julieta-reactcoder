@@ -139,7 +139,7 @@ export const CartItem = ({ dataItem }) => {
                 mt: 2,
                 fontWeight: 500,
                 fontSize: 18,
-                color: "#575757",
+                color: "primary.main",
               }}
             >
               Unit Price: US$ {dataItem.data.price}
@@ -226,7 +226,7 @@ export const CartItem = ({ dataItem }) => {
                 variant="title"
                 component="div"
                 align="center"
-                sx={{ m: 1, fontWeight: 500, fontSize: 16, color: "#575757" }}
+                sx={{ m: 1, fontWeight: 500, fontSize: 16, color: "primary.main" }}
               >
                 Qty
               </Typography>

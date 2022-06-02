@@ -98,7 +98,7 @@ export const Checkout = () => {
             borderRadius: 5,
             boxShadow: 5,
             p: 1,
-            bgcolor: "#f2f0f2",
+            bgcolor: "primary.light",
             justifyContent: "center",
           }}
         >
