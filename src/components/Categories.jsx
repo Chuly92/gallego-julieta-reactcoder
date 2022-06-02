@@ -1,10 +1,10 @@
 import {
-    Container,
-    Grid,
-    ImageList,
-    ImageListItem,
-    ImageListItemBar,
-    Typography
+  Container,
+  Grid,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  Typography
 } from "@mui/material";
 import { getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";

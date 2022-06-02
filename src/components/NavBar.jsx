@@ -1,15 +1,15 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import {
-    AppBar,
-    Avatar,
-    Box,
-    Button,
-    Container,
-    IconButton,
-    Menu,
-    MenuItem,
-    Toolbar,
-    Typography
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -64,7 +64,7 @@ export const NavBar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "black" }}>
+    <AppBar position="static" sx={{ bgcolor: "primary.dark" }}>
       <Container maxWidth="3840px">
         <Toolbar disableGutters>
           {/* Render icon page in full-size window (width up to 900px) */}
@@ -89,7 +89,7 @@ export const NavBar = () => {
                 mr: 2,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
-                color: "red",
+                color: "secondary.light",
               }}
             >
               PikaStore
@@ -155,7 +155,7 @@ export const NavBar = () => {
               sx={{
                 display: { xs: "flex", md: "none" },
                 fontFamily: "monospace",
-                color: "red",
+                color: "secondary.light",
                 textDecoration: "none",
                 fontSize: 24,
               }}

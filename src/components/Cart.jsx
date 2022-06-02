@@ -195,7 +195,7 @@ export const Cart = () => {
         <Grid container sx={{ mt: 2, mb: 2 }}>
           <Box
             sx={{
-              bgcolor: "#faedf8",
+              bgcolor: "primary.light",
               borderRadius: 5,
               boxShadow: 10,
               textAlign: "center",
