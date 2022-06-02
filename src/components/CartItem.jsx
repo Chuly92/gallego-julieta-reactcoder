@@ -1,9 +1,9 @@
-import {Container, Grid, ImageListItem, Typography, Box, ButtonGroup, IconButton, Button, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText} from '@mui/material';
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { Box, Button, ButtonGroup, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton, ImageListItem, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from "react";
 import { cartContext } from "../contexts/ContextCart";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export const CartItem = ({ dataItem }) => {
   const { removeItem, updateItem } = useContext(cartContext);

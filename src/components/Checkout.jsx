@@ -1,11 +1,11 @@
 import { AccountCircle, AlternateEmail, Phone } from "@mui/icons-material";
-import {Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, ImageListItem, InputAdornment, TextField, Typography, Alert, Snackbar} from '@mui/material';
+import { Alert, Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, ImageListItem, InputAdornment, Snackbar, TextField, Typography } from '@mui/material';
 import { addDoc, serverTimestamp } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../contexts/ContextCart";
-import { Loading } from "./Loading";
 import { orderCollection } from "../services/Firebase";
+import { Loading } from "./Loading";
 
 export const Checkout = () => {
   const { cart, qtyItemsCart, totalPriceCart, clear } = useContext(cartContext);

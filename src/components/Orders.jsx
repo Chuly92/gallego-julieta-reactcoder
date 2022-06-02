@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
-import { getDocs, query, where } from "firebase/firestore";
-import { orderCollection } from "../services/Firebase";
-import { Loading } from "./Loading";
-import { Box, Container } from "@mui/system";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import {
-  Grid,
-  ImageListItem,
-  Typography,
-  ButtonGroup,
-  IconButton,
+  Grid, Typography
 } from "@mui/material";
+import { Container } from "@mui/system";
+import { getDocs, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { orderCollection } from "../services/Firebase";
+import { Loading } from "./Loading";
 
 export const Orders = () => {
   const [data, setData] = useState([]);
