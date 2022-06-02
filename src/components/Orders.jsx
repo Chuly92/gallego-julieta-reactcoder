@@ -54,14 +54,14 @@ export const Orders = () => {
                   columns={16}
                   sx={{
                     mt: 2,
-                    // display: "flex",
+                    ml: 1,
                     boxShadow: 10,
                     borderRadius: 5,
                   }}
                 >
                     
                     <Grid item xs={2}>
-                  <ShoppingBasketIcon sx={{mt: 2}} />
+                  <ShoppingBasketIcon sx={{mt: 2, color: "secondary.main"}} />
                     </Grid>
                     <Grid item xs={6}>
                     <Typography

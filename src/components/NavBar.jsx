@@ -185,7 +185,7 @@ export const NavBar = () => {
                   textTransform: "capitalize",
                   fontSize: 20,
                   letterSpacing: ".2rem",
-                  mx: 2,
+                  mx: 2
                 }}
               >
                 {page.name}

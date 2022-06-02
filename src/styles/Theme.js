@@ -9,12 +9,9 @@ export const theme = createTheme({
       dark: "#171e2d",
     },
     secondary: {
-      light: "#f184a3",
+      light: "#f59ab4",
       main: "#bc5474",
       dark: "#892449",
-    },
-    typography: {
-      fontFamily: 'Poppins',
     },
   },
 });
