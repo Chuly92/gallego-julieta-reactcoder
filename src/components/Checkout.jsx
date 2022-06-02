@@ -1,25 +1,11 @@
 import { AccountCircle, AlternateEmail, Phone } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormControl,
-  Grid,
-  ImageListItem,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import {Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, ImageListItem, InputAdornment, TextField, Typography, Alert, Snackbar} from '@mui/material';
 import { addDoc, serverTimestamp } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../contexts/ContextCart";
 import { Loading } from "./Loading";
-import {orderCollection} from '../services/Firebase';
+import { orderCollection } from "../services/Firebase";
 
 export const Checkout = () => {
   const { cart, qtyItemsCart, totalPriceCart, clear } = useContext(cartContext);
@@ -28,14 +14,17 @@ export const Checkout = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: 0,
+    email: "",
   });
+
+  const [emailConfirmed, setEmailConfirmed] = useState("");
 
   const [orderId, setOrderId] = useState();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [openOrderCreated, setOpenOrderCreated] = useState(false);
+  const [openMailNotEq, setOpenMailNotEq] = useState(false);
 
   const handleClose = () => {
     setOpenOrderCreated(false);
@@ -48,28 +37,41 @@ export const Checkout = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleEmailConfirm = (e) => {
+    e.preventDefault();
+    setEmailConfirmed(e.target.value);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const order = {
-      buyer: formData,
-      items: cart.map((item) => ({
-        id: item.data.id,
-        name: item.data.name,
-        price: item.data.price,
-      })),
-      date: serverTimestamp(),
-      total: totalPriceCart,
-    };
+    if (formData.email !== emailConfirmed) {
+      setOpenMailNotEq(true);
+      setLoading(false);
+    } else {
+      const order = {
+        buyer: formData,
+        items: cart.map((item) => ({
+          id: item.data.id,
+          name: item.data.name,
+          price: item.data.price,
+          qtyItem: item.qtyItem
+        })),
+        date: serverTimestamp(),
+        qtyItems: qtyItemsCart,
+        total: totalPriceCart,
+        status: "Initial"
+      };
 
-    addDoc(orderCollection, order)
-      .then((e) => {
-        setOrderId(e.id);
-        setOpenOrderCreated(true);
-      })
-      .catch((err) => setError(err))
-      .finally(setLoading(false));
+      addDoc(orderCollection, order)
+        .then((e) => {
+          setOrderId(e.id);
+          setOpenOrderCreated(true);
+        })
+        .catch((err) => setError(err))
+        .finally(setLoading(false));
+    }
   };
 
   return (
@@ -166,6 +168,27 @@ export const Checkout = () => {
                 <TextField
                   required
                   color="secondary"
+                  label="Phone"
+                  onChange={handleChange}
+                  value={formData.phone}
+                  name="phone"
+                  type="tel"
+                  inputProps={{
+                    minLength: 10,
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Phone />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <TextField
+                  required
+                  color="secondary"
                   label="Email"
                   onChange={handleChange}
                   value={formData.email}
@@ -183,20 +206,16 @@ export const Checkout = () => {
                 <TextField
                   required
                   color="secondary"
-                  label="Phone"
-                  onChange={handleChange}
-                  value={formData.phone}
-                  name="phone"
-                  type="tel"
-                  inputProps={{
-                    minLength: 10,
-                    inputMode: "numeric",
-                    pattern: "[0-9]*",
-                  }}
+                  label="Confirm your email"
+                  onChange={handleEmailConfirm}
+                  value={emailConfirmed}
+                  name="emailConfirm"
+                  type="email"
+                  placeholder="Example: yourmail@gmail.com"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <Phone />
+                        <AlternateEmail />
                       </InputAdornment>
                     ),
                   }}
@@ -244,6 +263,21 @@ export const Checkout = () => {
                   </Button>
                 </DialogActions>
               </Dialog>
+
+              <Snackbar
+        open={openMailNotEq}
+        autoHideDuration={1000}
+        onClose={() => setOpenMailNotEq(false)}
+      >
+        <Alert
+          severity="error"
+          sx={{ width: "100%", fontSize: 18 }}
+          variant="filled"
+        >
+          Email fields do not match
+        </Alert>
+      </Snackbar>
+
             </Grid>
           </Grid>
         </Box>

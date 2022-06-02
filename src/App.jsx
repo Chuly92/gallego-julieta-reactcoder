@@ -8,6 +8,7 @@ import { Cart } from "./components/Cart";
 import {Checkout} from "./components/Checkout";
 import { ContextCart } from "./contexts/ContextCart";
 import { NotFound } from "./components/NotFound";
+import { Orders } from "./components/Orders";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
 
           <Route path="/cart" element={<Cart/>} />
           <Route path="/checkout" element={<Checkout/>} />
+          
+          <Route path="/orders" element={<Orders/>} />
 
           <Route path="/*" element={<NotFound/>} />
         </Routes>

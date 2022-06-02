@@ -39,7 +39,6 @@ export const ContextCart = ({ children }) => {
             return false;
           } else {
             return itemFounded;
-            // return { ...obj, qtyItem: item.qtyItem + obj.qtyItem };
           }
         }
         return obj;
