@@ -73,6 +73,8 @@ export const ContextCart = ({ children }) => {
 
   const clear = () => {
     setCart([]);
+    localStorage.clear();
+    setQtyItemsCart(0);
   };
 
   const updateItem = (item, newQty) => {

@@ -24,7 +24,7 @@ export const NavBar = () => {
 
   //Define menu values
   const pages = [
-    { id: 1, name: "Home", route: "/" },
+    { id: 1, name: "Homepage", route: "/" },
     { id: 2, name: "Store", route: "/" },
     { id: 3, name: "Categories", route: "/categories" },
   ];

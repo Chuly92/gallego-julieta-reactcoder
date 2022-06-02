@@ -1,9 +1,11 @@
 import { Button, Dialog, DialogActions, DialogTitle, Typography } from '@mui/material';
-import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import { Loading } from "./Loading";
+import {itemCollection} from "../services/Firebase";
+
 
 export const ItemListContainer = () => {
   const [data, setData] = useState([]);
@@ -19,10 +21,9 @@ export const ItemListContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-    const db = getFirestore();
 
     if (id) {
-      const q = query(collection(db, "items"), where("categoryCode", "==", id));
+      const q = query(itemCollection, where("categoryCode", "==", id));
       getDocs(q)
         .then((snapshot) => {
           if (snapshot.size === 0) {
@@ -36,7 +37,6 @@ export const ItemListContainer = () => {
         .catch((err) => setError(err))
         .finally(setLoading(false));
     } else {
-      const itemCollection = collection(db, "items");
       getDocs(itemCollection)
         .then((snapshot) => {
           setData(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
@@ -79,7 +79,7 @@ export const ItemListContainer = () => {
         <DialogTitle id="alert-dialog-title">
           {"There was some error loading the category"}
           <br />
-          {"Please try again"}
+          {"Please verify the category name/code"}
         </DialogTitle>
         <DialogActions>
           <Button

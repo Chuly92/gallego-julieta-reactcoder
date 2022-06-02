@@ -1,9 +1,10 @@
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
 import { Loading } from "./Loading";
+import {db} from "../services/Firebase";
 
 export const ItemDetailContainer = () => {
   const [data, setData] = useState({});
@@ -19,7 +20,6 @@ export const ItemDetailContainer = () => {
   
   useEffect(() => {
     setLoading(true);
-    const db = getFirestore();
     const docRef = doc(db, "items", id);
 
     getDoc(docRef)
@@ -54,12 +54,12 @@ export const ItemDetailContainer = () => {
       <Dialog
         open={openAlert}
         onClose={handleCloseAlert}
-        sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
+        sx={{ textAlign: "center", fontSize: 18 }}
       >
         <DialogTitle id="alert-dialog-title">
           {"There is no detail for this item"}
           <br />
-          {"Please try again"}
+          {"Please verify the product name/code"}
         </DialogTitle>
         <DialogActions>
           <Button

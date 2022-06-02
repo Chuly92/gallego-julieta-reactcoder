@@ -5,33 +5,42 @@ import {
   Container,
   Dialog,
   DialogActions,
+  DialogContent,
   DialogTitle,
   FormControl,
   Grid,
-  ImageListItem, InputAdornment, TextField,
-  Typography
+  ImageListItem,
+  InputAdornment,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { addDoc, collection, getFirestore, serverTimestamp, Timestamp } from "firebase/firestore";
+import { addDoc, serverTimestamp } from "firebase/firestore";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { cartContext } from "../contexts/ContextCart";
+import { Loading } from "./Loading";
+import {orderCollection, ordersCollection} from '../services/Firebase';
 
 export const Checkout = () => {
-  const { cart, qtyItemsCart, totalPriceCart } = useContext(cartContext);
+  const { cart, qtyItemsCart, totalPriceCart, clear } = useContext(cartContext);
+
+  let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: 0,
   });
+
   const [orderId, setOrderId] = useState();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [openOrderCreated, setOpenOrderCreated] = useState(false);
-
-  const db = getFirestore();
-  const ordersCollection = collection(db, "orders");
 
   const handleClose = () => {
     setOpenOrderCreated(false);
+    clear();
+    navigate("/");
   };
 
   const handleChange = (e) => {
@@ -41,6 +50,7 @@ export const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const order = {
       buyer: formData,
@@ -53,18 +63,17 @@ export const Checkout = () => {
       total: totalPriceCart,
     };
 
-    addDoc(ordersCollection, order)
-      .then((order) => {
-        setOrderId(order.id);
+    addDoc(orderCollection, order)
+      .then((e) => {
+        setOrderId(e.id);
         setOpenOrderCreated(true);
-        //navigate to a new component with the order finished
       })
-      .catch((err) => setError(err));
+      .catch((err) => setError(err))
+      .finally(setLoading(false));
   };
 
   return (
     <>
-
       <Container sx={{ justifyContent: "center", p: 2 }}>
         <Typography
           variant="title"
@@ -80,13 +89,15 @@ export const Checkout = () => {
           Checkout
         </Typography>
 
+        {loading && <Loading />}
+
         <Box
           sx={{
             borderRadius: 5,
             boxShadow: 5,
             p: 1,
             bgcolor: "#f2f0f2",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <Grid
@@ -212,12 +223,15 @@ export const Checkout = () => {
               <Dialog
                 open={openOrderCreated}
                 onClose={handleClose}
-                sx={{ textAlign: "center", fontSize: 20, borderRadius: 10 }}
+                sx={{ textAlign: "center", fontSize: 20 }}
               >
                 <DialogTitle id="alert-dialog-title">
                   {"Your order was created successfully!"}
-                  <br />
-                  {"ID: " + orderId}
+                  <DialogContent>
+                    {"The ID tracing is: " +
+                      orderId +
+                      ". You will receive an email with this information and the receipt of the shopping."}
+                  </DialogContent>
                 </DialogTitle>
                 <DialogActions>
                   <Button

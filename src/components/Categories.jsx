@@ -1,15 +1,16 @@
 import {
-    Container,
-    Grid,
-    ImageList,
-    ImageListItem,
-    ImageListItemBar,
-    Typography
+  Container,
+  Grid,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  Typography,
 } from "@mui/material";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Loading } from "./Loading";
+import { categoryCollection } from "../services/Firebase";
 
 export const Categories = () => {
   const [loading, setLoading] = useState(false);
@@ -18,10 +19,8 @@ export const Categories = () => {
 
   const fetchCategories = () => {
     setLoading(true);
-    const db = getFirestore();
-    const catCollection = collection(db, "categories");
-    
-    getDocs(catCollection)
+
+    getDocs(categoryCollection)
       .then((snapshot) => {
         setCategories(
           snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
@@ -29,7 +28,7 @@ export const Categories = () => {
       })
       .catch((err) => setError(err))
       .finally(setLoading(false));
-  }
+  };
 
   useEffect(() => {
     fetchCategories();
@@ -64,11 +63,16 @@ export const Categories = () => {
         >
           {categories.map((cat, index) => (
             <ImageList
-              sx={{ maxWidth: 600, maxHeight: 600, borderRadius: 5, boxShadow: 5 }}
+              sx={{
+                maxWidth: 600,
+                maxHeight: 600,
+                borderRadius: 5,
+                boxShadow: 5,
+              }}
               cols={1}
               key={cat.id}
             >
-              <Link to={`/category/${cat.code}`}>
+              <Link to={`/categories/${cat.code}`}>
                 <ImageListItem>
                   <img
                     src={cat.imgUrl}
