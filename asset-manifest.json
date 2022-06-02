@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/gallego-julieta-reactcoder/static/css/main.e6c13ad2.css",
+    "main.js": "/gallego-julieta-reactcoder/static/js/main.a5580f5d.js",
+    "static/js/787.77d7e295.chunk.js": "/gallego-julieta-reactcoder/static/js/787.77d7e295.chunk.js",
+    "static/media/pikachu.png": "/gallego-julieta-reactcoder/static/media/pikachu.0cf914699137b5d42986.png",
+    "index.html": "/gallego-julieta-reactcoder/index.html",
+    "main.e6c13ad2.css.map": "/gallego-julieta-reactcoder/static/css/main.e6c13ad2.css.map",
+    "main.a5580f5d.js.map": "/gallego-julieta-reactcoder/static/js/main.a5580f5d.js.map",
+    "787.77d7e295.chunk.js.map": "/gallego-julieta-reactcoder/static/js/787.77d7e295.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.a5580f5d.js"
+  ]
+}
