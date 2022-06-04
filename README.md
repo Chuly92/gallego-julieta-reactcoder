@@ -36,7 +36,7 @@ npm install
 
 npm start
 ```
-### El proyecto se ejecutará por defecto en `http://localhost:3000`
+El proyecto se ejecutará por defecto en `http://localhost:3000`
 
 
 
