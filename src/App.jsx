@@ -22,7 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<ItemListContainer />} />
               <Route path="/gallego-julieta-reactcoder" element={<ItemListContainer />} />
-
+              
               <Route path="/item/:id" element={<ItemDetailContainer />} />
 
               <Route path="/categories" element={<Categories />} />
