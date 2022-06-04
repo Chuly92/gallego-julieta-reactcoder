@@ -6,8 +6,6 @@
 <a href="https://github.com/" rel="nofollow"> <img src="https://www.tethysplatform.org/images/github-icon.png" alt="github" width="65" height="65" style="max-width: 100%;"></a> &nbsp;&nbsp;
 <a href="https://firebase.google.com/" rel="nofollow"> <img src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-built_knockout.png?hl=es-419" alt="firebase" width="140" height="60" style="max-width: 100%;"></a> &nbsp;&nbsp;
 
-https://e7.pngegg.com/pngimages/551/770/png-clipart-github-pages-logo-repository-fork-github-mammal-cat-like-mammal.png
-
 ***
 ### Tienda online de peluches y muñecos, especializada en el personaje de `Pikachu` de la serie `Pokemon`. 
 
