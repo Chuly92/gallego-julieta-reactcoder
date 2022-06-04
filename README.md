@@ -18,8 +18,11 @@
 
 
 La tienda consta de un apartado principal, donde se pueden visualizar todos los productos disponibles para comprar. Si entramos a uno de ellos, podemos ver su stock y una descripción mayor del producto, con la posibilidad de agregar uno o más items (según disponibilidad) a nuestro carrito de compras.
+
 También consta de un apartado de categorías, donde podemos seleccionar el tipo de producto que queremos visualizar dentro de la tienda (por ejemplo, peluches con disfraces diferenciados de otros peluches clásicos).
+
 Una vez que tenemos los elementos elegidos en nuestro carrito de compras, podemos simular la misma ingresando un email, contraseña y teléfono, la cual luego de algunas validaciones nos devolverá el nro de orgen generado.
+
 En el apartado de usuario, si bien no es funcional momentáneamente, se puede visualizar algunas órdenes ingresadas ya en la base de datos (con un mail de prueba que fue ingresado en el código fuente de la aplicación).
 
 *** 
