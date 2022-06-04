@@ -32,8 +32,11 @@ git clone https://github.com/Chuly92/gallego-julieta-reactcoder.git
 
 cd gallego-julieta-reactcoder
 
-npm install (o "npm -i" tambien)
+npm install 
+
+npm start
 ```
+### El proyecto se ejecutará por defecto en `http://localhost:3000`
 
 
 
