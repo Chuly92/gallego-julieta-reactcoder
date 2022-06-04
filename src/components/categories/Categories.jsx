@@ -9,8 +9,8 @@ import {
 import { getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { categoryCollection } from "../services/Firebase";
-import { Loading } from "./Loading";
+import { categoryCollection } from "../../services/Firebase";
+import { Loading } from ".././extras/Loading";
 
 export const Categories = () => {
   const [loading, setLoading] = useState(false);
@@ -36,6 +36,8 @@ export const Categories = () => {
 
   return (
     <>
+
+      {error && "Error loading data"}
       <Container maxWidth="3840px" component="div">
         <Typography
           variant="title"

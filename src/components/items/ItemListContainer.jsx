@@ -2,9 +2,9 @@ import { Button, Dialog, DialogActions, DialogTitle, Typography } from '@mui/mat
 import { getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { itemCollection } from "../services/Firebase";
+import { itemCollection } from "../../services/Firebase";
+import { Loading } from "../extras/Loading";
 import { ItemList } from "./ItemList";
-import { Loading } from "./Loading";
 
 
 export const ItemListContainer = () => {

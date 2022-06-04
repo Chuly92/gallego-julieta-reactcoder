@@ -1,12 +1,10 @@
-import React, { createContext, useEffect, useState } from "react";
 import {
-  Alert,
-  Snackbar,
-  Button,
+  Alert, Button,
   Dialog,
   DialogActions,
-  DialogTitle,
+  DialogTitle, Snackbar
 } from "@mui/material";
+import React, { createContext, useEffect, useState } from "react";
 
 export const cartContext = createContext(undefined);
 
@@ -106,6 +104,7 @@ export const ContextCart = ({ children }) => {
       const sumItems = cart.map((item) => {
         totalItems += item.qtyItem;
         totalPriceItems += item.data.price * item.qtyItem;
+        return sumItems;
       });
 
       setQtyItemsCart(totalItems);

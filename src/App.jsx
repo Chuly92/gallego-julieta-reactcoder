@@ -1,15 +1,17 @@
+import { ThemeProvider } from "@mui/material";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Cart } from "./components/cart/Cart";
+import { Categories } from "./components/categories/Categories";
+import { NotFound } from "./components/extras/NotFound";
+import { ItemDetailContainer } from "./components/items/ItemDetailContainer";
+import { ItemListContainer } from "./components/items/ItemListContainer";
 import { NavBar } from "./components/NavBar";
-import { Categories } from "./components/Categories";
-import { ItemDetailContainer } from "./components/ItemDetailContainer";
-import { ItemListContainer } from "./components/ItemListContainer";
-import { Cart } from "./components/Cart";
-import { Checkout } from "./components/Checkout";
+import { Checkout } from "./components/shopping/Checkout";
+import { Account } from "./components/user/Account";
+import { Logout } from "./components/user/Logout";
+import { Orders } from "./components/user/Orders";
 import { ContextCart } from "./contexts/ContextCart";
-import { NotFound } from "./components/NotFound";
-import { Orders } from "./components/Orders";
-import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/Theme";
 
 function App() {
@@ -31,7 +33,10 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
 
+              <Route path="/account" element={<Account />} />
               <Route path="/orders" element={<Orders />} />
+              <Route path="/logout" element={<Logout />} />
+
 
               <Route path="/*" element={<NotFound />} />
             </Routes>

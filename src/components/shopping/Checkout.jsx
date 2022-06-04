@@ -3,9 +3,9 @@ import { Alert, Box, Button, Container, Dialog, DialogActions, DialogContent, Di
 import { addDoc, serverTimestamp } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { cartContext } from "../contexts/ContextCart";
-import { orderCollection } from "../services/Firebase";
-import { Loading } from "./Loading";
+import { cartContext } from "../../contexts/ContextCart";
+import { orderCollection } from "../../services/Firebase";
+import { Loading } from "../extras/Loading";
 
 export const Checkout = () => {
   const { cart, qtyItemsCart, totalPriceCart, clear } = useContext(cartContext);
@@ -76,6 +76,8 @@ export const Checkout = () => {
 
   return (
     <>
+    {error && "Database error. Please try again"}
+
       <Container sx={{ justifyContent: "center", p: 2 }}>
         <Typography
           variant="title"

@@ -15,7 +15,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/pikachu.png";
 import { cartContext } from "../contexts/ContextCart";
-import { CartWidget } from "./CartWidget";
+import { CartWidget } from "./cart/CartWidget";
 
 export const NavBar = () => {
 

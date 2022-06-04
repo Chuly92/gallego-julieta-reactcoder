@@ -1,6 +1,6 @@
-import React from "react";
 import { initializeApp } from "firebase/app";
-import {collection, getFirestore} from 'firebase/firestore';
+import { collection, getFirestore } from 'firebase/firestore';
+import React from "react";
 
 initializeApp({
   apiKey: "AIzaSyBoSnVsNHg-AlgAO1jNcoDSxtYefkcGAOI",

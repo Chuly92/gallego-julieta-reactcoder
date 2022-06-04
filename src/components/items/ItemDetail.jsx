@@ -1,6 +1,6 @@
 import { Container, Grid, ImageListItem, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { cartContext } from "../contexts/ContextCart";
+import { cartContext } from "../../contexts/ContextCart";
 import { ItemCount } from "./ItemCount";
 
 export const ItemDetail = ({ data }) => {
@@ -25,11 +25,15 @@ export const ItemDetail = ({ data }) => {
         if(updatedStock === 0){
           setShowItemCount(false);
         }
+        return reviewCart;
       }
 
       if(!itemInCart){
         setStockWithCart(data.stock);
       }
+
+      return reviewCart;
+
   })}, [data, itemInCart, cart])
 
   return (

@@ -5,8 +5,8 @@ import {
 import { Container } from "@mui/system";
 import { getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { orderCollection } from "../services/Firebase";
-import { Loading } from "./Loading";
+import { orderCollection } from "../../services/Firebase";
+import { Loading } from "../extras/Loading";
 
 export const Orders = () => {
   const [data, setData] = useState([]);

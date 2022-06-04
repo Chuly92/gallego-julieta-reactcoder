@@ -2,9 +2,9 @@ import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "../services/Firebase";
+import { db } from "../../services/Firebase";
+import { Loading } from "../extras/Loading";
 import { ItemDetail } from "./ItemDetail";
-import { Loading } from "./Loading";
 
 export const ItemDetailContainer = () => {
   const [data, setData] = useState({});
