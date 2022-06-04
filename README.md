@@ -15,7 +15,7 @@
 
 *** 
 ### Descripción
-***
+
 
 La tienda consta de un apartado principal, donde se pueden visualizar todos los productos disponibles para comprar. Si entramos a uno de ellos, podemos ver su stock y una descripción mayor del producto, con la posibilidad de agregar uno o más items (según disponibilidad) a nuestro carrito de compras.
 También consta de un apartado de categorías, donde podemos seleccionar el tipo de producto que queremos visualizar dentro de la tienda (por ejemplo, peluches con disfraces diferenciados de otros peluches clásicos).
@@ -24,7 +24,7 @@ En el apartado de usuario, si bien no es funcional momentáneamente, se puede vi
 
 *** 
 ### Ejecutar el proyecto
-***
+
 Si bien se puede visualizar el mismo desde la URL antes mencionada, podemos descargar el código fuente y ejecutarlo en nuestro local siguiendo estos pasos desde nuestra terminal de comandos de preferencia:
  
 
@@ -39,6 +39,7 @@ npm start
 ```
 El proyecto se ejecutará por defecto en `http://localhost:3000`.
 
+***
 ### Consideraciones Adicionales
 Se utilizó MaterialUI para el diseño para agilizar el armado del sitio web y poder focalizar el desarrollo en la funcionalidad de la tienda en sí. La elección de este Framework en particular es que al estar específicamente diseñado para React es muy simple el manejo de componentes y ayuda tanto dandole estilos al sitio como brindando ciertas funciones propias en cada componente para manejar acciones y/o estados.
 
