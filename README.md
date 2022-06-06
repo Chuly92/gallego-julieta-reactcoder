@@ -9,11 +9,11 @@
 ***
 ### Tienda online de peluches y muñecos, especializada en el personaje de `Pikachu` de la serie `Pokemon`. 
 
-***
+
 
 ![PikaStore Final Gif](https://user-images.githubusercontent.com/30849109/172083617-8f1d8d2a-cdcd-47da-a537-acccc45e0318.gif)
 
-***
+
 ### Sitio web desarrollado para el curso de **React JS** de **Coderhouse**. El mismo puede ser accedido desde la siguiente URL: [**CLICK ME !**](https://chuly92.github.io/gallego-julieta-reactcoder/)
 
 
